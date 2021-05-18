@@ -1,0 +1,15 @@
+# Default values for cita-cloud-local-cluster.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+kmsPassword: "123456"
+
+pvcName: "local-pvc"
+
+image:
+  pullPolicy: IfNotPresent
+
+service:
+  port: 30004

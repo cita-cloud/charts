@@ -1,0 +1,219 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "cita-cloud-local-cluster.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels: {{- include "cita-cloud-local-cluster.selectorLabels" . | nindent 6 }}
+  serviceName: {{ printf "%s-headless-service" .Release.Name }}
+  podManagementPolicy: "Parallel"
+  template:
+    metadata:
+      labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
+    spec:
+      initContainers:
+      - image: citacloud/cita_cloud_config
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: cita-cloud-config
+        args:
+        - --work_dir
+        - /data
+        - --peers_count
+        - {{ .Values.replicaCount | quote }}
+        - --kms_password
+        - {{ .Values.kmsPassword | quote }}
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      containers:
+      - image: praqma/network-multitool
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: debug
+        ports:
+        - containerPort: 9999
+          protocol: TCP
+          name: debug
+        env:
+        - name: HTTP_PORT
+          value: '9999'
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: syncthing/syncthing:latest
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: syncthing
+        ports:
+        - containerPort: 22000
+          protocol: TCP
+          name: sync
+        - containerPort: 8384
+          protocol: TCP
+          name: gui
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /var/syncthing
+        env:
+        - name: PUID
+          value: '0'
+        - name: PGID
+          value: '0'
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+      - image: citacloud/network_p2p
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: network
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 40000
+          protocol: TCP
+          name: network
+        - containerPort: 50000
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - network run -p 50000 -k network_key
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: citacloud/consensus_raft
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: consensus
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 50001
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - consensus run -p 50001
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: citacloud/executor_evm
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: executor
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 50002
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - executor run -p 50002
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: citacloud/storage_rocksdb
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: storage
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 50003
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - storage run -p 50003
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: citacloud/controller
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: controller
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 50004
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - controller run -p 50004
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+      - image: citacloud/kms_sm
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        name: kms
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 50005
+          protocol: TCP
+          name: grpc
+        command:
+        - sh
+        - -c
+        - kms run -p 50005 -k /kms/key_file
+        workingDir: /data
+        volumeMounts:
+        - name: datadir
+          subPathExpr: $(POD_NAME)
+          mountPath: /data
+        - name: kms-key
+          mountPath: /kms
+          readOnly: true
+      volumes:
+      - name: kms-key
+        secret:
+          secretName: {{ printf "%s-kms-secret" .Release.Name }}
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: {{ .Values.pvcName | quote }}
