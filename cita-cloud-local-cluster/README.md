@@ -16,6 +16,10 @@ Setup CITA-Cloud blockchain in one k8s cluster
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| config.imageTag | string | `"latest"` | Image tag of cita-cloud-config container. |
+| config.isStdout | bool | `false` | Is output log to stdout? |
+| config.kmsPassword | string | `"123456"` | Password of kms. |
+| config.logLevel | string | `"info"` | log level warn/info/debug/trace |
 | consensus.imageName | string | `"citacloud/consensus_raft"` | docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"citacloud/controller"` | docker image of controller container. |
@@ -28,7 +32,6 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for all docker images. |
 | kms.imageName | string | `"citacloud/kms_sm"` | docker image of kms container. citacloud/kms_sm or citacloud/kms_eth |
 | kms.imageTag | string | `"latest"` | Image tag of kms container. |
-| kmsPassword | string | `"123456"` | Password of kms. |
 | network.imageName | string | `"citacloud/network_p2p"` | docker image of network container. citacloud/network_p2p or citacloud/network_direct |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |

@@ -15,16 +15,24 @@ spec:
       labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
     spec:
       initContainers:
-      - image: citacloud/cita_cloud_config
+      - image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: cita-cloud-config
         args:
+        - --chain_name
+        - {{ .Release.Name }}
+        - --is_bft
+        - {{ contains "bft" .Values.consensus.imageName | quote }}
         - --work_dir
         - /data
         - --peers_count
         - {{ .Values.replicaCount | quote }}
         - --kms_password
-        - {{ .Values.kmsPassword | quote }}
+        - {{ .Values.config.kmsPassword | quote }}
+        - --is_stdout
+        - {{ .Values.config.isStdout | quote }}
+        - --log_level
+        - {{ .Values.config.logLevel | quote }}
         volumeMounts:
         - name: datadir
           mountPath: /data

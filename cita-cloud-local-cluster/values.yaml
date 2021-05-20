@@ -5,11 +5,18 @@
 # replicaCount -- Count of blockchain nodes.
 replicaCount: 3
 
-# kmsPassword -- Password of kms.
-kmsPassword: "123456"
-
 # pvcName -- Name of persistentVolumeClaim.
 pvcName: "local-pvc"
+
+config:
+  # config.imageTag -- Image tag of cita-cloud-config container.
+  imageTag: latest
+  # config.kmsPassword -- Password of kms.
+  kmsPassword: "123456"
+  # config.isStdout -- Is output log to stdout?
+  isStdout: false
+  # config.logLevel -- log level warn/info/debug/trace
+  logLevel: info
 
 image:
   # image.pullPolicy -- pullPolicy for all docker images.
