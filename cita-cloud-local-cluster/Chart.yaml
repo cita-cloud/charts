@@ -1,6 +1,7 @@
 apiVersion: v2
 name: cita-cloud-local-cluster
-description: A Helm chart for Kubernetes
+description: Setup CITA-Cloud blockchain in one k8s cluster
+home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-local-cluster
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,3 +23,7 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "6.0.0"
+
+maintainers:
+  - email: contact@rivtower.com
+    name: Rivtower Technologies
