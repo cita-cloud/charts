@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cita-cloud-config
+spec:
+  template:
+    spec:
+      containers:
+      - name: cita-cloud-config
+        image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
+        args:
+        - {{ .Values.config.action | quote }}
+        - --work_dir
+        - /data
+        - --chain_name
+        - {{ .Values.config.chainName }}
+        {{- if .Values.config.arguments }}
+        {{ range .Values.config.arguments }}
+        - {{ . | quote }}
+        {{ end }}
+        {{ end }}
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+      volumes:
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: {{ .Values.pvcName | quote }}
+      restartPolicy: Never
+  backoffLimit: 1

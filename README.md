@@ -32,3 +32,17 @@ docker run -v "$(pwd):/helm-docs" jnorwood/helm-docs:latest
 ### introduce charts
 
 cita-cloud-local-cluster - Setup CITA-Cloud blockchain in one k8s cluster.
+
+```
+helm install test-chain ./cita-cloud-local-cluster
+```
+
+cita-cloud-config - Create a job to change config of CITA-Cloud blockchain in one k8s cluster
+
+```
+helm install increase ./cita-cloud-config --set config.action=increase --set 'config.arguments={--kms_password,123456}'
+
+helm install decrease ./cita-cloud-config --set config.action=decrease
+
+helm install clean ./cita-cloud-config --set config.action=clean
+```

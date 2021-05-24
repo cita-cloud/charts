@@ -1,0 +1,16 @@
+# Default values for cita-cloud-local-cluster.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# pvcName -- Name of persistentVolumeClaim.
+pvcName: "local-pvc"
+
+config:
+  # config.imageTag -- Image tag of cita-cloud-config container.
+  imageTag: latest
+  # config.chainName -- Chain name of cita-cloud blockchain that will be changed.
+  chainName: test-chain
+  # config.action -- Action of cita-cloud-config.
+  action: init
+  # config.arguments -- Arguments of cita-cloud-config.
+  arguments: []

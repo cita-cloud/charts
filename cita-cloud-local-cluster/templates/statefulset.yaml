@@ -19,6 +19,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: cita-cloud-config
         args:
+        - init
         - --chain_name
         - {{ .Release.Name }}
         - --is_bft
