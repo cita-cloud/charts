@@ -8,6 +8,7 @@ spec:
       containers:
       - name: cita-cloud-config
         image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         args:
         - {{ .Values.config.action | quote }}
         - --work_dir
