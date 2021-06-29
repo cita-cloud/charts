@@ -14,7 +14,4 @@ spec:
   - port: 40000
     targetPort: 40000
     name: network
-  - port: 22000
-    targetPort: 22000
-    name: syncthing
   selector: {{- include "cita-cloud-local-cluster.labels" . | nindent 4 }}
