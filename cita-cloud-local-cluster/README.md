@@ -36,7 +36,8 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
 | replicaCount | int | `3` | Count of blockchain nodes. |
-| service.nodePort | int | `30004` | nodePort to expose RPC. |
+| service.nodePort | int | `30004` | nodePort to expose controller RPC. |
+| service.vmPort | int | `30005` | vmPort expose executor RPC |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
 | stateDB.imageTag | string | `"latest"` | Image tag of stateDB container. |
 | storage.imageName | string | `"citacloud/storage_rocksdb"` | docker image of storage container. citacloud/storage_rocksdb or citacloud/storage_sqlite |

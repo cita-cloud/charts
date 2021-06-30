@@ -23,8 +23,10 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  # service.nodePort -- nodePort to expose RPC.
+  # service.nodePort -- nodePort to expose controller RPC.
   nodePort: 30004
+  # service.vmPort -- vmPort expose executor RPC
+  vmPort: 30005
 
 debug:
   # debug.enabled -- Is there a debug container in each pod?
