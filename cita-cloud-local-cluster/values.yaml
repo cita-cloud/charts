@@ -23,8 +23,10 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  # service.nodePort -- nodePort to expose RPC.
+  # service.nodePort -- nodePort to expose controller RPC.
   nodePort: 30004
+  # service.vmPort -- vmPort expose executor RPC
+  vmPort: 30005
 
 debug:
   # debug.enabled -- Is there a debug container in each pod?
@@ -32,12 +34,6 @@ debug:
   # debug.imageName -- Image name of debug container.
   imageName: praqma/network-multitool
   # debug.imageTag -- Image tag of debug container.
-  imageTag: latest
-
-sync:
-  # sync.imageName -- docker image of sync container.
-  imageName: syncthing/syncthing
-  # sync.imageTag -- Image tag of sync container.
   imageTag: latest
 
 network:

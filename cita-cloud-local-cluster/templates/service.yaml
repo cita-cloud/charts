@@ -11,6 +11,11 @@ spec:
       targetPort: 50004
       nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
-      name: http
+      name: rpc
+    - port: 50002
+      targetPort: 50002
+      nodePort: {{ .Values.service.vmPort }}
+      protocol: TCP
+      name: call
   selector:
     {{- include "cita-cloud-local-cluster.selectorLabels" . | nindent 4 }}

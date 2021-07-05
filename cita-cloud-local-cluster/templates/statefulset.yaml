@@ -59,30 +59,6 @@ spec:
           subPathExpr: $(POD_NAME)
           mountPath: /data
       {{- end }}
-      - image: {{ printf "%s:%s" .Values.sync.imageName .Values.sync.imageTag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        name: sync
-        ports:
-        - containerPort: 22000
-          protocol: TCP
-          name: sync
-        - containerPort: 8384
-          protocol: TCP
-          name: gui
-        volumeMounts:
-        - name: datadir
-          subPathExpr: $(POD_NAME)
-          mountPath: /var/syncthing
-        env:
-        - name: PUID
-          value: '0'
-        - name: PGID
-          value: '0'
-        - name: POD_NAME
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.name
       - image: {{ printf "%s:%s" .Values.network.imageName .Values.network.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: network
