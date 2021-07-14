@@ -14,6 +14,7 @@ spec:
     metadata:
       labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
     spec:
+      shareProcessNamespace: true
       initContainers:
       - image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -78,7 +79,7 @@ spec:
         command:
         - sh
         - -c
-        - network run -p 50000 -k network_key
+        - network run -p 50000
         workingDir: /data
         volumeMounts:
         - name: datadir
