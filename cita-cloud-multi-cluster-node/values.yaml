@@ -1,0 +1,68 @@
+# Default values for cita-cloud-multi-cluster-node.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# pvcName -- Name of persistentVolumeClaim.
+pvcName: local-pvc
+
+config:
+  # config.chainName -- Chain name of cita-cloud blockchain that will be setup.
+  chainName: test-chain
+  # config.nodeIndex -- Node index of the node that will be setup.
+  nodeIndex: 0
+  # config.kmsPassword -- Password of kms.
+  kmsPassword: '123456'
+
+image:
+  # image.pullPolicy -- pullPolicy for all docker images IfNotPresent/Always.
+  pullPolicy: Always
+
+debug:
+  # debug.enabled -- Is there a debug container in each pod?
+  enabled: true
+  # debug.imageName -- Image name of debug container.
+  imageName: praqma/network-multitool
+  # debug.imageTag -- Image tag of debug container.
+  imageTag: latest
+
+network:
+  # network.imageName -- docker image of network container. citacloud/network_p2p or citacloud/network_direct
+  imageName: citacloud/network_p2p
+  # network.imageTag -- Image tag of network container.
+  imageTag: latest
+
+consensus:
+  # consensus.imageName -- docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft
+  imageName: citacloud/consensus_bft
+  # consensus.imageTag -- Image tag of consensus container.
+  imageTag: latest
+
+executor:
+  # executor.imageName -- docker image of executor container. citacloud/executor_evm or citacloud/executor_poc or citacloud/executor_chaincode_ext
+  imageName: citacloud/executor_evm
+  # executor.imageTag -- Image tag of executor container.
+  imageTag: latest
+
+stateDB:
+  # stateDB.imageName -- docker image of stateDB container.
+  imageName: couchdb
+  # stateDB.imageTag -- Image tag of stateDB container.
+  imageTag: latest
+
+storage:
+  # storage.imageName -- docker image of storage container. citacloud/storage_rocksdb or citacloud/storage_sqlite
+  imageName: citacloud/storage_rocksdb
+  # storage.imageTag -- Image tag of storage container.
+  imageTag: latest
+
+controller:
+  # controller.imageName -- docker image of controller container.
+  imageName: citacloud/controller
+  # controller.imageTag -- Image tag of controller container.
+  imageTag: latest
+
+kms:
+  # kms.imageName -- docker image of kms container. citacloud/kms_sm or citacloud/kms_eth
+  imageName: citacloud/kms_sm
+  # kms.imageTag -- Image tag of kms container.
+  imageTag: latest
