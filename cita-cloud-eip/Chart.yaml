@@ -1,7 +1,7 @@
 apiVersion: v2
-name: cita-cloud-pvc
-description: Create PVC for CITA-Cloud
-home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-pvc
+name: cita-cloud-eip
+description: Create EIP for CITA-Cloud
+home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-eip
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,7 +21,7 @@ version: 0.1.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 6.0.0
+appVersion: "6.0.0"
 
 maintainers:
   - email: contact@rivtower.com

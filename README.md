@@ -31,13 +31,19 @@ docker run --rm -v "$(pwd):/helm-docs" jnorwood/helm-docs:latest
 
 ### introduce charts
 
+cita-cloud-pvc - Create PVC for CITA-Cloud
+
+```
+helm install local-pvc ./cita-cloud-pvc
+```
+
 cita-cloud-local-cluster - Setup CITA-Cloud blockchain in one k8s cluster.
 
 ```
 helm install test-chain ./cita-cloud-local-cluster
 ```
 
-cita-cloud-config - Create a job to change config of CITA-Cloud blockchain in one k8s cluster
+cita-cloud-config - Create a job to create/change config of CITA-Cloud blockchain in one k8s cluster
 
 ```
 helm install increase ./cita-cloud-config --set config.action=increase --set 'config.arguments={--kms_password,123456}'
@@ -45,4 +51,24 @@ helm install increase ./cita-cloud-config --set config.action=increase --set 'co
 helm install decrease ./cita-cloud-config --set config.action=decrease
 
 helm install clean ./cita-cloud-config --set config.action=clean
+```
+
+cita-cloud-eip - Create EIP for CITA-Cloud
+
+```
+$ helm install cita-cloud-eip ./cita-cloud-eip --set service.startIP=192.168.0.2 --set service.endIP=192.168.0.254
+```
+
+cita-cloud-porter-lb - Setup porter Loadbalancer for CITA-Cloud node
+
+```
+helm install test-chain-0-lb ./cita-cloud-porter-lb --set config.chainName=test-chain --set config.nodeIndex=0 --set service.port=30000 --set service.eipName=cita-cloud-eip
+```
+
+cita-cloud-multi-cluster-node - Setup CITA-Cloud node in multi k8s cluster
+
+Note: You should generate and dispatch config of CITA-Cloud blockchain to multi k8s cluster at first.
+
+```
+helm install test-chain-0 ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.nodeIndex=0
 ```

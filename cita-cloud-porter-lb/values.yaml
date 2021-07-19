@@ -1,0 +1,15 @@
+# Default values for cita-cloud-porter-lb.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+config:
+  # config.chainName -- Chain name of cita-cloud blockchain that will be setup.
+  chainName: test-chain
+  # config.nodeIndex -- Node index of the node that will be setup.
+  nodeIndex: 0
+
+service:
+  # service.port -- Start port to expose service.
+  port: 30000
+  # service.eipName -- Name of eip.
+  eipName: porter-eip

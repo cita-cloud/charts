@@ -1,7 +1,7 @@
 apiVersion: v2
-name: cita-cloud-pvc
-description: Create PVC for CITA-Cloud
-home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-pvc
+name: cita-cloud-porter-lb
+description: Setup porter Loadbalancer for CITA-Cloud node
+home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-porter-lb
 
 # A chart can be either an 'application' or a 'library' chart.
 #
