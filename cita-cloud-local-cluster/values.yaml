@@ -9,6 +9,8 @@ replicaCount: 3
 pvcName: "local-pvc"
 
 config:
+  # config.superAdmin -- Super admin account address.
+  superAdmin: 0x415f568207900b6940477396fcd2c201efe49beb
   # config.imageTag -- Image tag of cita-cloud-config container.
   imageTag: latest
   # config.kmsPassword -- Password of kms.

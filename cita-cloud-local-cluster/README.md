@@ -20,6 +20,7 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | config.isStdout | bool | `false` | Is output log to stdout? |
 | config.kmsPassword | string | `"123456"` | Password of kms. |
 | config.logLevel | string | `"info"` | log level warn/info/debug/trace |
+| config.superAdmin | string | `"0x415f568207900b6940477396fcd2c201efe49beb"` | Super admin account address. |
 | consensus.imageName | string | `"citacloud/consensus_raft"` | docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"citacloud/controller"` | docker image of controller container. |
