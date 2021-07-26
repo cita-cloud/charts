@@ -30,7 +30,7 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | debug.imageTag | string | `"latest"` | Image tag of debug container. |
 | executor.imageName | string | `"citacloud/executor_evm"` | docker image of executor container. citacloud/executor_evm or citacloud/executor_poc or citacloud/executor_chaincode_ext |
 | executor.imageTag | string | `"latest"` | Image tag of executor container. |
-| image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for all docker images. |
+| image.pullPolicy | string | `"Always"` | pullPolicy for all docker images. |
 | kms.imageName | string | `"citacloud/kms_sm"` | docker image of kms container. citacloud/kms_sm or citacloud/kms_eth |
 | kms.imageTag | string | `"latest"` | Image tag of kms container. |
 | network.imageName | string | `"citacloud/network_p2p"` | docker image of network container. citacloud/network_p2p or citacloud/network_direct |

@@ -22,7 +22,7 @@ config:
 
 image:
   # image.pullPolicy -- pullPolicy for all docker images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   # service.nodePort -- nodePort to expose controller RPC.

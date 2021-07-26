@@ -5,7 +5,7 @@
 service:
   # service.startIP -- startIP of PorterLB.
   startIP: 192.168.0.100
-  # service.endIP -- startIP of PorterLB.
-  endIP: 192.168.0.100
+  # service.endIP -- endIP of PorterLB.
+  endIP: 192.168.0.200
   # service.interface -- NIC Used for PorterLB.
   interface: eth0

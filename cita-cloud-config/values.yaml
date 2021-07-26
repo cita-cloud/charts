@@ -7,7 +7,7 @@ pvcName: "local-pvc"
 
 image:
   # image.pullPolicy -- pullPolicy for cita_cloud_config docker images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 config:
   # config.imageTag -- Image tag of cita-cloud-config container.

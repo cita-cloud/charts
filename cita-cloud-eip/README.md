@@ -16,7 +16,7 @@ Create EIP for CITA-Cloud
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| service.endIP | string | `"192.168.0.100"` | startIP of PorterLB. |
+| service.endIP | string | `"192.168.0.200"` | endIP of PorterLB. |
 | service.interface | string | `"eth0"` | NIC Used for PorterLB. |
 | service.startIP | string | `"192.168.0.100"` | startIP of PorterLB. |
 

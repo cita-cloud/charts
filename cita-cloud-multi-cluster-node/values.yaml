@@ -15,7 +15,7 @@ config:
 
 image:
   # image.pullPolicy -- pullPolicy for all docker images IfNotPresent/Always.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 debug:
   # debug.enabled -- Is there a debug container in each pod?
