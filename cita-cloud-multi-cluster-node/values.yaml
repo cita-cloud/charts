@@ -1,34 +1,21 @@
-# Default values for cita-cloud-local-cluster.
+# Default values for cita-cloud-multi-cluster-node.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# replicaCount -- Count of blockchain nodes.
-replicaCount: 3
-
 # pvcName -- Name of persistentVolumeClaim.
-pvcName: "local-pvc"
+pvcName: local-pvc
 
 config:
-  # config.superAdmin -- Super admin account address.
-  superAdmin: 0x415f568207900b6940477396fcd2c201efe49beb
-  # config.imageTag -- Image tag of cita-cloud-config container.
-  imageTag: v6.0.0
+  # config.chainName -- Chain name of cita-cloud blockchain that will be setup.
+  chainName: test-chain
+  # config.nodeIndex -- Node index of the node that will be setup.
+  nodeIndex: 0
   # config.kmsPassword -- Password of kms.
-  kmsPassword: "123456"
-  # config.isStdout -- Is output log to stdout?
-  isStdout: false
-  # config.logLevel -- log level warn/info/debug/trace
-  logLevel: info
+  kmsPassword: '123456'
 
 image:
-  # image.pullPolicy -- pullPolicy for all docker images.
+  # image.pullPolicy -- pullPolicy for all docker images IfNotPresent/Always.
   pullPolicy: IfNotPresent
-
-service:
-  # service.nodePort -- nodePort to expose controller RPC.
-  nodePort: 30004
-  # service.vmPort -- vmPort expose executor RPC
-  vmPort: 30005
 
 debug:
   # debug.enabled -- Is there a debug container in each pod?

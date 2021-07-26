@@ -1,10 +1,10 @@
-# cita-cloud-local-cluster
+# cita-cloud-multi-cluster-node
 
 ![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.1.0](https://img.shields.io/badge/AppVersion-6.1.0-informational?style=flat-square)
 
-Setup CITA-Cloud blockchain in one k8s cluster
+Setup CITA-Cloud node in multi k8s cluster
 
-**Homepage:** <https://github.com/cita-cloud/charts/tree/master/cita-cloud-local-cluster>
+**Homepage:** <https://github.com/cita-cloud/charts/tree/master/cita-cloud-multi-cluster-node>
 
 ## Maintainers
 
@@ -16,11 +16,9 @@ Setup CITA-Cloud blockchain in one k8s cluster
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| config.imageTag | string | `"v6.0.0"` | Image tag of cita-cloud-config container. |
-| config.isStdout | bool | `false` | Is output log to stdout? |
+| config.chainName | string | `"test-chain"` | Chain name of cita-cloud blockchain that will be setup. |
 | config.kmsPassword | string | `"123456"` | Password of kms. |
-| config.logLevel | string | `"info"` | log level warn/info/debug/trace |
-| config.superAdmin | string | `"0x415f568207900b6940477396fcd2c201efe49beb"` | Super admin account address. |
+| config.nodeIndex | int | `0` | Node index of the node that will be setup. |
 | consensus.imageName | string | `"citacloud/consensus_bft"` | docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft |
 | consensus.imageTag | string | `"v6.0.0"` | Image tag of consensus container. |
 | controller.imageName | string | `"citacloud/controller"` | docker image of controller container. |
@@ -30,15 +28,12 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | debug.imageTag | string | `"latest"` | Image tag of debug container. |
 | executor.imageName | string | `"citacloud/executor_evm"` | docker image of executor container. citacloud/executor_evm or citacloud/executor_poc or citacloud/executor_chaincode_ext |
 | executor.imageTag | string | `"v6.1.0"` | Image tag of executor container. |
-| image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for all docker images. |
+| image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for all docker images IfNotPresent/Always. |
 | kms.imageName | string | `"citacloud/kms_sm"` | docker image of kms container. citacloud/kms_sm or citacloud/kms_eth |
 | kms.imageTag | string | `"v6.0.0"` | Image tag of kms container. |
 | network.imageName | string | `"citacloud/network_direct"` | docker image of network container. citacloud/network_p2p or citacloud/network_direct |
 | network.imageTag | string | `"v6.0.0"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
-| replicaCount | int | `3` | Count of blockchain nodes. |
-| service.nodePort | int | `30004` | nodePort to expose controller RPC. |
-| service.vmPort | int | `30005` | vmPort expose executor RPC |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
 | stateDB.imageTag | string | `"3.1.1"` | Image tag of stateDB container. |
 | storage.imageName | string | `"citacloud/storage_rocksdb"` | docker image of storage container. citacloud/storage_rocksdb or citacloud/storage_sqlite |

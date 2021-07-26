@@ -23,6 +23,8 @@ spec:
         - init
         - --chain_name
         - {{ .Release.Name }}
+        - --super_admin
+        - {{ .Values.config.superAdmin | quote }}
         - --is_bft
         - {{ contains "bft" .Values.consensus.imageName | quote }}
         - --work_dir

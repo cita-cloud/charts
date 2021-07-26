@@ -1,6 +1,6 @@
 # cita-cloud-config
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.1.0](https://img.shields.io/badge/AppVersion-6.1.0-informational?style=flat-square)
+![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.1.0](https://img.shields.io/badge/AppVersion-6.1.0-informational?style=flat-square)
 
 Create a job to change config of CITA-Cloud blockchain in one k8s cluster
 
@@ -19,8 +19,8 @@ Create a job to change config of CITA-Cloud blockchain in one k8s cluster
 | config.action | string | `"init"` | Action of cita-cloud-config. |
 | config.arguments | list | `[]` | Arguments of cita-cloud-config. |
 | config.chainName | string | `"test-chain"` | Chain name of cita-cloud blockchain that will be changed. |
-| config.imageTag | string | `"latest"` | Image tag of cita-cloud-config container. |
-| image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for cita_cloud_config docker images. |
+| config.imageTag | string | `"v6.0.0"` | Image tag of cita-cloud-config container. |
+| image.pullPolicy | string | `"Always"` | pullPolicy for cita_cloud_config docker images. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
 
 ----------------------------------------------
