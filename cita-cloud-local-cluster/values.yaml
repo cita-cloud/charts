@@ -12,7 +12,7 @@ config:
   # config.superAdmin -- Super admin account address.
   superAdmin: 0x415f568207900b6940477396fcd2c201efe49beb
   # config.imageTag -- Image tag of cita-cloud-config container.
-  imageTag: latest
+  imageTag: v6.0.0
   # config.kmsPassword -- Password of kms.
   kmsPassword: "123456"
   # config.isStdout -- Is output log to stdout?
@@ -22,7 +22,7 @@ config:
 
 image:
   # image.pullPolicy -- pullPolicy for all docker images.
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 service:
   # service.nodePort -- nodePort to expose controller RPC.
@@ -42,40 +42,40 @@ network:
   # network.imageName -- docker image of network container. citacloud/network_p2p or citacloud/network_direct
   imageName: citacloud/network_p2p
   # network.imageTag -- Image tag of network container.
-  imageTag: latest
+  imageTag: v6.0.0
 
 consensus:
   # consensus.imageName -- docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft
-  imageName: citacloud/consensus_raft
+  imageName: citacloud/consensus_bft
   # consensus.imageTag -- Image tag of consensus container.
-  imageTag: latest
+  imageTag: v6.0.0
 
 executor:
   # executor.imageName -- docker image of executor container. citacloud/executor_evm or citacloud/executor_poc or citacloud/executor_chaincode_ext
   imageName: citacloud/executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: latest
+  imageTag: v6.0.0
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
   imageName: couchdb
   # stateDB.imageTag -- Image tag of stateDB container.
-  imageTag: latest
+  imageTag: 3.1.1
 
 storage:
   # storage.imageName -- docker image of storage container. citacloud/storage_rocksdb or citacloud/storage_sqlite
   imageName: citacloud/storage_rocksdb
   # storage.imageTag -- Image tag of storage container.
-  imageTag: latest
+  imageTag: v6.0.0
 
 controller:
   # controller.imageName -- docker image of controller container.
   imageName: citacloud/controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: latest
+  imageTag: v6.0.0
 
 kms:
   # kms.imageName -- docker image of kms container. citacloud/kms_sm or citacloud/kms_eth
   imageName: citacloud/kms_sm
   # kms.imageTag -- Image tag of kms container.
-  imageTag: latest
+  imageTag: v6.0.0
