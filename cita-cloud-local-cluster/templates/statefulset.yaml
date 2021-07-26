@@ -81,7 +81,7 @@ spec:
         command:
         - sh
         - -c
-        - network run -p 50000
+        - network run -p 50000 -k network_key
         workingDir: /data
         volumeMounts:
         - name: datadir
