@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "porterlb-%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+  annotations:
+    lb.kubesphere.io/v1alpha1: porter
+    protocol.porter.kubesphere.io/v1alpha1: layer2
+    eip.porter.kubesphere.io/v1alpha2: {{ .Values.service.eipName }}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 40000
+      protocol: TCP
+      name: network
+    - port: {{ add .Values.service.port 1 }}
+      targetPort: 9999
+      protocol: TCP
+      name: debug
+    - port: {{ add .Values.service.port 2 }}
+      targetPort: 50004
+      protocol: TCP
+      name: rpc
+    - port: {{ add .Values.service.port 3 }}
+      targetPort: 50002
+      protocol: TCP
+      name: call
+  selector:
+    node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}

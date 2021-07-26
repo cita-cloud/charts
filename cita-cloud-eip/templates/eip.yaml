@@ -1,0 +1,9 @@
+apiVersion: network.kubesphere.io/v1alpha2
+kind: Eip
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  address: {{ printf "%s-%s" .Values.service.startIP .Values.service.endIP }}
+  protocol: layer2
+  interface: {{ .Values.service.interface }}
+  disable: false
