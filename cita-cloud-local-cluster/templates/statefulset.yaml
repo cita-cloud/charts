@@ -14,6 +14,7 @@ spec:
     metadata:
       labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
     spec:
+      shareProcessNamespace: true
       initContainers:
       - image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
