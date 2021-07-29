@@ -12,7 +12,7 @@ config:
   # config.superAdmin -- Super admin account address.
   superAdmin: 0x415f568207900b6940477396fcd2c201efe49beb
   # config.imageTag -- Image tag of cita-cloud-config container.
-  imageTag: v6.0.0
+  imageTag: v6.1.0
   # config.kmsPassword -- Password of kms.
   kmsPassword: "123456"
   # config.isStdout -- Is output log to stdout?
@@ -47,7 +47,7 @@ network:
 consensus:
   # consensus.imageName -- docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft
   imageName: citacloud/consensus_bft
-  # consensus.imageTag -- Image tag of consensus container.
+  # consensus.imageTag -- Image tag of consensus container, raft - v6.2.0, bft - v6.0.0
   imageTag: v6.0.0
 
 executor:
@@ -72,7 +72,7 @@ controller:
   # controller.imageName -- docker image of controller container.
   imageName: citacloud/controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: v6.1.0
+  imageTag: v6.2.0
 
 kms:
   # kms.imageName -- docker image of kms container. citacloud/kms_sm or citacloud/kms_eth
