@@ -34,7 +34,7 @@ network:
 consensus:
   # consensus.imageName -- docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft
   imageName: citacloud/consensus_bft
-  # consensus.imageTag -- Image tag of consensus container.
+  # consensus.imageTag -- Image tag of consensus container, raft - v6.2.0, bft - v6.0.0
   imageTag: v6.0.0
 
 executor:
@@ -59,7 +59,7 @@ controller:
   # controller.imageName -- docker image of controller container.
   imageName: citacloud/controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: v6.1.0
+  imageTag: v6.2.0
 
 kms:
   # kms.imageName -- docker image of kms container. citacloud/kms_sm or citacloud/kms_eth

@@ -1,6 +1,6 @@
 # cita-cloud-multi-cluster-node
 
-![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.1.0](https://img.shields.io/badge/AppVersion-6.1.0-informational?style=flat-square)
+![Version: 6.2.0](https://img.shields.io/badge/Version-6.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.2.0](https://img.shields.io/badge/AppVersion-6.2.0-informational?style=flat-square)
 
 Setup CITA-Cloud node in multi k8s cluster
 
@@ -20,9 +20,9 @@ Setup CITA-Cloud node in multi k8s cluster
 | config.kmsPassword | string | `"123456"` | Password of kms. |
 | config.nodeIndex | int | `0` | Node index of the node that will be setup. |
 | consensus.imageName | string | `"citacloud/consensus_bft"` | docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft |
-| consensus.imageTag | string | `"v6.0.0"` | Image tag of consensus container. |
+| consensus.imageTag | string | `"v6.0.0"` | Image tag of consensus container, raft - v6.2.0, bft - v6.0.0 |
 | controller.imageName | string | `"citacloud/controller"` | docker image of controller container. |
-| controller.imageTag | string | `"v6.1.0"` | Image tag of controller container. |
+| controller.imageTag | string | `"v6.2.0"` | Image tag of controller container. |
 | debug.enabled | bool | `true` | Is there a debug container in each pod? |
 | debug.imageName | string | `"praqma/network-multitool"` | Image name of debug container. |
 | debug.imageTag | string | `"latest"` | Image tag of debug container. |

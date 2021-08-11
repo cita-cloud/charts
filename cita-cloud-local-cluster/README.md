@@ -1,6 +1,6 @@
 # cita-cloud-local-cluster
 
-![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.1.0](https://img.shields.io/badge/AppVersion-6.1.0-informational?style=flat-square)
+![Version: 6.2.0](https://img.shields.io/badge/Version-6.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.2.0](https://img.shields.io/badge/AppVersion-6.2.0-informational?style=flat-square)
 
 Setup CITA-Cloud blockchain in one k8s cluster
 
@@ -21,8 +21,8 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | config.kmsPassword | string | `"123456"` | Password of kms. |
 | config.logLevel | string | `"info"` | log level warn/info/debug/trace |
 | config.superAdmin | string | `"0x415f568207900b6940477396fcd2c201efe49beb"` | Super admin account address. |
-| consensus.imageName | string | `"citacloud/consensus_bft"` | docker image of consensus container. citacloud/consensus_raft(v6.2.0) or citacloud/consensus_bft(v6.0.0) |
-| consensus.imageTag | string | `"v6.0.0"` | Image tag of consensus container. |
+| consensus.imageName | string | `"citacloud/consensus_bft"` | docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft |
+| consensus.imageTag | string | `"v6.0.0"` | Image tag of consensus container, raft - v6.2.0, bft - v6.0.0 |
 | controller.imageName | string | `"citacloud/controller"` | docker image of controller container. |
 | controller.imageTag | string | `"v6.2.0"` | Image tag of controller container. |
 | debug.enabled | bool | `true` | Is there a debug container in each pod? |
@@ -33,7 +33,7 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | image.pullPolicy | string | `"IfNotPresent"` | pullPolicy for all docker images. |
 | kms.imageName | string | `"citacloud/kms_sm"` | docker image of kms container. citacloud/kms_sm or citacloud/kms_eth |
 | kms.imageTag | string | `"v6.0.0"` | Image tag of kms container. |
-| network.imageName | string | `"citacloud/network_direct"` | docker image of network container. citacloud/network_p2p(v6.0.0) or citacloud/network_direct(v6.0.0) |
+| network.imageName | string | `"citacloud/network_direct"` | docker image of network container. citacloud/network_p2p or citacloud/network_direct |
 | network.imageTag | string | `"v6.0.0"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
 | replicaCount | int | `3` | Count of blockchain nodes. |
