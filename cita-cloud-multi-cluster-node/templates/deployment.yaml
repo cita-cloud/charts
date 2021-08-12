@@ -31,7 +31,7 @@ spec:
             value: '9999'
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       {{- end }}
       - image: {{ printf "%s:%s" .Values.network.imageName .Values.network.imageTag }}
@@ -51,7 +51,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       - image: {{ printf "%s:%s" .Values.consensus.imageName .Values.consensus.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -67,7 +67,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       {{- if contains "chaincode" .Values.executor.imageName }}
       - image: {{ printf "%s:%s" .Values.executor.imageName .Values.executor.imageTag }}
@@ -90,7 +90,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       - image: {{ printf "%s:%s" .Values.stateDB.imageName .Values.stateDB.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -101,7 +101,7 @@ spec:
             name: couchdb
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v/state-data" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v/state-data" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /opt/couchdb/data
         env:
           - name: COUCHDB_USER
@@ -123,7 +123,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       {{- end }}
       - image: {{ printf "%s:%s" .Values.storage.imageName .Values.storage.imageTag }}
@@ -140,7 +140,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       - image: {{ printf "%s:%s" .Values.controller.imageName .Values.controller.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -156,7 +156,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
       - image: {{ printf "%s:%s" .Values.kms.imageName .Values.kms.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -172,7 +172,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPath: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
             mountPath: /data
           - name: kms-key
             mountPath: /kms
