@@ -16,30 +16,48 @@ spec:
     spec:
       shareProcessNamespace: true
       initContainers:
-      - image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
+      - image: {{ printf "citacloud/cloud-config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        name: cita-cloud-config
+        name: cloud-config
+        command:
+          - "/data/cloud-config.sh"
         args:
-        - init
-        - --chain_name
-        - {{ .Release.Name }}
-        - --super_admin
-        - {{ .Values.config.superAdmin | quote }}
-        - --is_bft
-        - {{ contains "bft" .Values.consensus.imageName | quote }}
-        - --work_dir
-        - /data
-        - --peers_count
-        - {{ .Values.replicaCount | quote }}
-        - --kms_password
-        - {{ .Values.config.kmsPassword | quote }}
-        - --is_stdout
-        - {{ .Values.config.isStdout | quote }}
-        - --log_level
-        - {{ .Values.config.logLevel | quote }}
+          # super admin account
+          - -a
+          - {{ .Values.config.superAdmin }}
+          # chain's name
+          - -c
+          - {{ .Release.Name }}
+          # kms password list
+          - -k
+          - {{ .Values.config.kmsPasswordList }}
+          # replicaCount
+          - -r
+          - {{ .Values.replicaCount | quote }}
+          # block interval
+          - -i
+          - {{ .Values.config.blockInterval | quote }}
+          # block limit
+          - -l
+          - {{ .Values.config.blockLimit | quote }}
+          # namespace
+          - -n
+          - {{ .Release.Namespace }}
+          # network image
+          - -x
+          - {{ .Values.network.imageName }}
+          # consensus image
+          - -y
+          - {{ .Values.consensus.imageName }}
+          # kms image
+          - -z
+          - {{ .Values.kms.imageName }}
         volumeMounts:
         - name: datadir
           mountPath: /data
+        - name: cloud-config-shell
+          mountPath: /data/cloud-config.sh
+          subPath: cloud-config.sh
       containers:
       {{- if .Values.debug.enabled }}
       - image: {{ printf "%s:%s" .Values.debug.imageName .Values.debug.imageTag }}
@@ -62,9 +80,9 @@ spec:
           subPathExpr: $(POD_NAME)
           mountPath: /data
       {{- end }}
-      - image: {{ printf "%s:%s" .Values.network.imageName .Values.network.imageTag }}
+      - name: network
+        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.network.imageName }}:{{ .Values.network.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        name: network
         env:
         - name: POD_NAME
           valueFrom:
@@ -81,15 +99,15 @@ spec:
         command:
         - sh
         - -c
-        - network run -p 50000 -k network_key
+        - network run -p 50000
         workingDir: /data
         volumeMounts:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
-      - image: {{ printf "%s:%s" .Values.consensus.imageName .Values.consensus.imageTag }}
+      - name: consensus
+        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.consensus.imageName }}:{{ .Values.consensus.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        name: consensus
         env:
         - name: POD_NAME
           valueFrom:
@@ -103,14 +121,14 @@ spec:
         command:
         - sh
         - -c
-        - consensus run -p 50001
+        - consensus run --stdout
         workingDir: /data
         volumeMounts:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
       {{- if contains "chaincode" .Values.executor.imageName }}
-      - image: {{ printf "%s:%s" .Values.executor.imageName .Values.executor.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: executor
         env:
@@ -160,7 +178,7 @@ spec:
               apiVersion: v1
               fieldPath: metadata.name
       {{- else }}
-      - image: {{ printf "%s:%s" .Values.executor.imageName .Values.executor.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: executor
         env:
@@ -183,7 +201,7 @@ spec:
           subPathExpr: $(POD_NAME)
           mountPath: /data
       {{- end }}
-      - image: {{ printf "%s:%s" .Values.storage.imageName .Values.storage.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.storage.imageName }}:{{ .Values.storage.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: storage
         env:
@@ -205,7 +223,7 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
-      - image: {{ printf "%s:%s" .Values.controller.imageName .Values.controller.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.controller.imageName }}:{{ .Values.controller.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: controller
         env:
@@ -227,9 +245,9 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
-      - image: {{ printf "%s:%s" .Values.kms.imageName .Values.kms.imageTag }}
+      - name: kms
+        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.kms.imageName }}:{{ .Values.kms.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        name: kms
         env:
         - name: POD_NAME
           valueFrom:
@@ -243,19 +261,17 @@ spec:
         command:
         - sh
         - -c
-        - kms run -p 50005 -k /kms/key_file
+        - kms run -p 50005
         workingDir: /data
         volumeMounts:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
-        - name: kms-key
-          mountPath: /kms
-          readOnly: true
       volumes:
-      - name: kms-key
-        secret:
-          secretName: {{ printf "%s-kms-secret" .Release.Name }}
+      - name: cloud-config-shell
+        configMap:
+          name: {{ .Release.Name }}-cloud-config-shell
+          defaultMode: 0744
       - name: datadir
         persistentVolumeClaim:
           claimName: {{ .Values.pvcName | quote }}

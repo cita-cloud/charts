@@ -6,24 +6,47 @@ spec:
   template:
     spec:
       containers:
-      - name: cita-cloud-config
-        image: {{ printf "citacloud/cita_cloud_config:%s" .Values.config.imageTag }}
+      - name: cloud-config
+        image: {{ printf "citacloud/cloud-config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        command:
+          - "/data/action.sh"
         args:
-        - {{ .Values.config.action | quote }}
-        - --work_dir
-        - /data
-        - --chain_name
-        - {{ .Values.config.chainName }}
-        {{- if .Values.config.arguments }}
-        {{ range .Values.config.arguments }}
-        - {{ . | quote }}
-        {{ end }}
-        {{ end }}
+          - -a
+          - {{ .Values.config.action | quote }}
+          - -c
+          - {{ .Values.config.chainName | quote }}
+          - -p
+          - {{ .Values.config.kmsPassword | quote }}
+          - -s
+          - {{ .Values.config.superAdmin | quote }}
+          - -i
+          - {{ .Values.config.blockInterval | quote }}
+          - -l
+          - {{ .Values.config.blockLimit | quote }}
+          - -n
+          - {{ .Values.config.nodeList | quote }}
+          - -m
+          - {{ .Values.config.node | quote }}
+          - -d
+          - {{ .Values.config.domain | quote }}
+          - -x
+          - {{ .Values.config.networkImage | quote }}
+          - -y
+          - {{ .Values.config.consensusImage | quote }}
+          - -z
+          - {{ .Values.config.kmsImage | quote }}
         volumeMounts:
         - name: datadir
           mountPath: /data
+        - name: cloud-config-job-shell
+          mountPath: /data/action.sh
+          subPath: action.sh
       volumes:
+      - name: cloud-config-job-shell
+        configMap:
+          name: cloud-config-job-shell
+          defaultMode: 0744
       - name: datadir
         persistentVolumeClaim:
           claimName: {{ .Values.pvcName | quote }}

@@ -6,7 +6,7 @@ config:
   # config.chainName -- Chain name of cita-cloud blockchain that will be setup.
   chainName: test-chain
   # config.nodeIndex -- Node index of the node that will be setup.
-  nodeIndex: 0
+  domain: 0
 
 service:
   # service.port -- Start port to expose service.

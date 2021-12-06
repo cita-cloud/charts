@@ -16,8 +16,8 @@ Create a job to change config of CITA-Cloud blockchain in one k8s cluster
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| config.action | string | `"init"` | Action of cita-cloud-config. |
-| config.arguments | list | `[]` | Arguments of cita-cloud-config. |
+| config.action | string | `"increase"` | Action of cita-cloud-config. |
+| config.kmsPassword | string | `123456` | Kms password of new node. |
 | config.chainName | string | `"test-chain"` | Chain name of cita-cloud blockchain that will be changed. |
 | config.imageTag | string | `"latest"` | Image tag of cita-cloud-config container. |
 | image.pullPolicy | string | `"Always"` | pullPolicy for cita_cloud_config docker images. |

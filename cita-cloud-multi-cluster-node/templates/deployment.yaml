@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+  name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
   labels:
-    node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+    node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
     chain_name: {{ .Values.config.chainName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+      node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
   template:
     metadata:
       labels:
-        node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+        node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
         chain_name: {{ .Values.config.chainName }}
     spec:
       shareProcessNamespace: true
@@ -31,10 +31,10 @@ spec:
             value: '9999'
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
       {{- end }}
-      - image: {{ printf "%s:%s" .Values.network.imageName .Values.network.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.network.imageName }}:{{ .Values.network.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: network
         ports:
@@ -47,13 +47,13 @@ spec:
         command:
           - sh
           - -c
-          - network run -p 50000 -k network_key
+          - network run -p 50000
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
-      - image: {{ printf "%s:%s" .Values.consensus.imageName .Values.consensus.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.consensus.imageName }}:{{ .Values.consensus.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: consensus
         ports:
@@ -63,14 +63,14 @@ spec:
         command:
           - sh
           - -c
-          - consensus run -p 50001
+          - consensus run --stdout
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
       {{- if contains "chaincode" .Values.executor.imageName }}
-      - image: {{ printf "%s:%s" .Values.executor.imageName .Values.executor.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: executor
         ports:
@@ -90,7 +90,7 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
       - image: {{ printf "%s:%s" .Values.stateDB.imageName .Values.stateDB.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -101,7 +101,7 @@ spec:
             name: couchdb
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v/state-data" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v/state-data" .Values.config.chainName .Values.config.domain }}
             mountPath: /opt/couchdb/data
         env:
           - name: COUCHDB_USER
@@ -109,7 +109,7 @@ spec:
           - name: COUCHDB_PASSWORD
             value: citacloud
       {{- else }}
-      - image: {{ printf "%s:%s" .Values.executor.imageName .Values.executor.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: executor
         ports:
@@ -123,10 +123,10 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
       {{- end }}
-      - image: {{ printf "%s:%s" .Values.storage.imageName .Values.storage.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.storage.imageName }}:{{ .Values.storage.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: storage
         ports:
@@ -140,9 +140,9 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
-      - image: {{ printf "%s:%s" .Values.controller.imageName .Values.controller.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.controller.imageName }}:{{ .Values.controller.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: controller
         ports:
@@ -156,9 +156,9 @@ spec:
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
-      - image: {{ printf "%s:%s" .Values.kms.imageName .Values.kms.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.kms.imageName }}:{{ .Values.kms.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: kms
         ports:
@@ -168,19 +168,13 @@ spec:
         command:
           - sh
           - -c
-          - kms run -p 50005 -k /kms/key_file
+          - kms run -p 50005
         workingDir: /data
         volumeMounts:
           - name: datadir
-            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
+            subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
-          - name: kms-key
-            mountPath: /kms
-            readOnly: true
       volumes:
-        - name: kms-key
-          secret:
-            secretName: {{ printf "kms-secret-%s-%v" .Values.config.chainName .Values.config.nodeIndex }}
         - name: datadir
           persistentVolumeClaim:
             claimName: {{ .Values.pvcName | quote }}

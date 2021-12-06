@@ -14,7 +14,32 @@ config:
   imageTag: latest
   # config.chainName -- Chain name of cita-cloud blockchain that will be changed.
   chainName: test-chain
-  # config.action -- Action of cita-cloud-config.
-  action: init
-  # config.arguments -- Arguments of cita-cloud-config.
-  arguments: []
+  # config.action -- Action of cita-cloud-config. init-multi or increase-multi or decrease-multi or increase or decrease a node
+  action: init-multi
+  # config.kmsPassword -- Arguments of cita-cloud-config.
+  # if use in init multi cluster, split by ','
+  kmsPassword: 123456,123456
+  # it will be used increase multi cluster
+  node: "192.168.10.135:40000:node2"
+  # it will be used decrease multi cluster
+  domain: "node2"
+  #
+  # Notice: the following parameters are only used when init multi cluster
+  #
+  # config.superAdmin -- Super admin account address
+  superAdmin: 8f81961f263f45f88230375623394c9301c033e7
+  # config.blockInterval -- Chain's block interval
+  blockInterval: 3
+  # config.blockLimit --Chain's block limit
+  blockLimit: 100
+  # config.logLevel -- Log level warn/info/debug/trace
+  logLevel: info
+  # config.nodeList -- nodeList use the following format: [ip:port:domain]
+  # looks like 192.168.10.123:40000:node0,192.168.10.134:40001:node1
+  nodeList: "192.168.10.123:40000:node0,192.168.10.134:40000:node1"
+  # config.networkType
+  networkImage: network_p2p
+  # config.consensusType
+  consensusImage: consensus_raft
+  # config.kmsType
+  kmsImage: kms_sm
