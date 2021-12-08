@@ -12,30 +12,51 @@ spec:
         command:
           - "/data/action.sh"
         args:
-          - -a
-          - {{ .Values.config.action | quote }}
+          # chainName
           - -c
           - {{ .Values.config.chainName | quote }}
+          # action.type
+          - -t
+          - {{ .Values.config.action.type | quote }}
+          # increaseSingle.kmsPassword
           - -p
-          - {{ .Values.config.kmsPassword | quote }}
+          - {{ .Values.config.action.increaseSingle.kmsPassword | quote }}
+          # initMulti.superAdmin
           - -s
-          - {{ .Values.config.superAdmin | quote }}
+          - {{ .Values.config.action.initMulti.superAdmin | quote }}
+          # initMulti.kmsPasswordList
+          - -P
+          - {{ .Values.config.action.initMulti.kmsPasswordList | quote }}
+          # initMulti.nodeList
+          - -N
+          - {{ .Values.config.action.initMulti.nodeList | quote }}
+          # initMulti.blockInterval
           - -i
-          - {{ .Values.config.blockInterval | quote }}
+          - {{ .Values.config.action.initMulti.blockInterval | quote }}
+          # initMulti.blockLimit
           - -l
-          - {{ .Values.config.blockLimit | quote }}
-          - -n
-          - {{ .Values.config.nodeList | quote }}
-          - -m
-          - {{ .Values.config.node | quote }}
-          - -d
-          - {{ .Values.config.domain | quote }}
+          - {{ .Values.config.action.initMulti.blockLimit | quote }}
+          # initMulti.logLevel
+          - -L
+          - {{ .Values.config.action.initMulti.logLevel | quote }}
+          # initMulti.networkImage
           - -x
-          - {{ .Values.config.networkImage | quote }}
+          - {{ .Values.config.action.initMulti.networkImage | quote }}
+          # initMulti.consensusImage
           - -y
-          - {{ .Values.config.consensusImage | quote }}
+          - {{ .Values.config.action.initMulti.consensusImage | quote }}
+          # initMulti.kmsImage
           - -z
-          - {{ .Values.config.kmsImage | quote }}
+          - {{ .Values.config.action.initMulti.kmsImage | quote }}
+          # increaseMulti.kmsPassword
+          - -Q
+          - {{ .Values.config.action.increaseMulti.kmsPassword | quote }}
+          # increaseMulti.node
+          - -n
+          - {{ .Values.config.action.increaseMulti.node | quote }}
+          # decreaseMulti.domain
+          - -d
+          - {{ .Values.config.action.decreaseMulti.domain | quote }}
         volumeMounts:
         - name: datadir
           mountPath: /data

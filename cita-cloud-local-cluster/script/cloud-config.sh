@@ -5,12 +5,11 @@ kms_password_list=''
 replica_count=''
 block_interval=''
 block_limit=''
-namespace=''
 network_image=''
 consensus_image=''
 kms_image=''
 
-while getopts c:a:k:r:i:l:n:x:y:z: opt; do
+while getopts c:a:k:r:i:l:x:y:z: opt; do
   case $opt in
   c)
     chain_name=$OPTARG
@@ -29,9 +28,6 @@ while getopts c:a:k:r:i:l:n:x:y:z: opt; do
     ;;
   l)
     block_limit=$OPTARG
-    ;;
-  n)
-    namespace=$OPTARG
     ;;
   x)
     network_image=$OPTARG
@@ -57,7 +53,7 @@ node_list=''
 
 i=0
 while [ $i -lt "$replica_count" ]; do
-  node_list=$node_list$chain_name"-$i.$chain_name-headless-service.$namespace:40000:$i,"
+  node_list=$node_list$chain_name"-$i.$chain_name-headless-service:40000:$i,"
   # shellcheck disable=SC2004
   i=$(($i + 1))
 done

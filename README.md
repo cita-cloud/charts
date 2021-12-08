@@ -46,11 +46,11 @@ helm install test-chain ./cita-cloud-local-cluster
 cita-cloud-config - Create a job to create/change config of CITA-Cloud blockchain in one k8s cluster
 
 ```
-helm install increase ./cita-cloud-config --set config.action=increase --set 'config.arguments={--kms_password,123456}'
+helm install increase-single ./cita-cloud-config --set config.action.type=increaseSingle --set config.action.increaseSingle.kmsPassword=123456
 
-helm install decrease ./cita-cloud-config --set config.action=decrease
+helm install decrease-single ./cita-cloud-config --set config.action.type=decreaseSingle
 
-helm install clean ./cita-cloud-config --set config.action=clean
+helm install clean ./cita-cloud-config --set config.action.type=clean
 ```
 
 cita-cloud-eip - Create EIP for CITA-Cloud
@@ -62,13 +62,49 @@ $ helm install cita-cloud-eip ./cita-cloud-eip --set service.startIP=192.168.0.2
 cita-cloud-porter-lb - Setup porter Loadbalancer for CITA-Cloud node
 
 ```
-helm install test-chain-0-lb ./cita-cloud-porter-lb --set config.chainName=test-chain --set config.nodeIndex=0 --set service.port=30000 --set service.eipName=cita-cloud-eip
+helm install test-chain-0-lb ./cita-cloud-porter-lb --set config.chainName=test-chain --set config.domain=node0 --set service.port=30000 --set service.eipName=cita-cloud-eip
 ```
 
 cita-cloud-multi-cluster-node - Setup CITA-Cloud node in multi k8s cluster
 
-Note: You should generate and dispatch config of CITA-Cloud blockchain to multi k8s cluster at first.
-
+1. create pvc in each k8s cluster
 ```
-helm install test-chain-0 ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.nodeIndex=0
+helm install local-pvc ./cita-cloud-pvc
+```
+
+2. init chain config in each k8s cluster
+```
+helm install init-multi ./cita-cloud-config --set config.action.type=initMulti --set config.chainName=test-chain --set config.action.initMulti.superAdmin=8f81961f263f45f88230375623394c9301c033e7 --set config.action.initMulti.kmsPasswordList="123456\,123456\,123456" --set config.action.initMulti.nodeList="192.168.10.123:40000:node0\,192.168.10.134:40000:node1\,192.168.10.135:40000:node2" --set pvcName=local-pvc
+```
+
+3. create a node in each k8s cluster 
+```
+# in first k8s cluster
+helm install test-chain ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.domain=node0
+# in second k8s cluster
+helm install test-chain ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.domain=node1
+# in third k8s cluster
+helm install test-chain ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.domain=node2
+```
+
+increase node in multi cluster
+```
+# execute this command in each k8s cluster
+helm install increase-multi ./cita-cloud-config --set config.action.type=increaseMulti --set config.chainName=test-chain --set config.action.increaseMulti.kmsPassword=123456 --set config.action.increaseMulti.node="192.168.10.136:40000:node3" --set pvcName=local-pvc
+
+# in fourth k8s cluster
+helm install test-chain ./cita-cloud-multi-cluster-node --set config.chainName=test-chain --set config.domain=node3
+
+# you should restart the first three pod
+```
+
+decrease node(domain:node3) in multi cluster
+```
+# execute this command in each k8s cluster
+helm install decrease-multi ./cita-cloud-config --set config.action.type=decreaseMulti --set config.chainName=test-chain --set config.action.decreaseMulti.domain=node3
+
+# in fourth k8s cluster
+helm uninstall test-chain
+
+# you should restart the first three pod 
 ```

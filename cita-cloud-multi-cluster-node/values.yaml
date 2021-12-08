@@ -12,7 +12,7 @@ pvcName: local-pvc
 config:
   # config.chainName -- Chain name of cita-cloud blockchain that will be setup.
   chainName: test-chain
-  # config.nodeIndex -- Node index of the node that will be setup.
+  # config.domain -- Domain of the node that will be setup.
   domain: node0
 
 image:

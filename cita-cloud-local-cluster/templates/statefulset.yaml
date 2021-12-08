@@ -40,9 +40,6 @@ spec:
           # block limit
           - -l
           - {{ .Values.config.blockLimit | quote }}
-          # namespace
-          - -n
-          - {{ .Release.Namespace }}
           # network image
           - -x
           - {{ .Values.network.imageName }}

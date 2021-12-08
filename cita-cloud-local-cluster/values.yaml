@@ -3,11 +3,13 @@
 # Declare variables to be passed into your templates.
 
 global:
+  # global.registry -- You can specify the image registry.
   registry: docker.io
+  # global.repository -- You can specify the image repository.
   repository: citacloud
 
 # replicaCount -- Count of blockchain nodes.
-replicaCount: 2
+replicaCount: 3
 
 # pvcName -- Name of persistentVolumeClaim.
 pvcName: "local-pvc"
@@ -18,10 +20,10 @@ config:
   # config.imageTag -- Image tag of cloud-config container.
   imageTag: latest
   # config.kmsPasswordList -- Password of kms for each node.
-  kmsPasswordList: 123456,123456
-  # config.blockInterval -- Chain's block interval
+  kmsPasswordList: 123456,123456,123456
+  # config.blockInterval -- Chain's block interval.
   blockInterval: 3
-  # config.blockLimit --Chain's block limit
+  # config.blockLimit --Chain's block limit.
   blockLimit: 100
   # config.logLevel -- Log level warn/info/debug/trace
   logLevel: info
