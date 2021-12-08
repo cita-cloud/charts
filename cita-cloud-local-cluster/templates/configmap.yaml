@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cloud-config-shell
+  namespace: {{.Release.Namespace}}
+data:
+{{ (.Files.Glob "script/cloud-config.sh").AsConfig | indent 2 }}
