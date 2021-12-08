@@ -2,6 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+global:
+  # global.registry -- You can specify the image registry.
+  registry: docker.io
+  # global.repository -- You can specify the image repository.
+  repository: citacloud
+
 # replicaCount -- Count of blockchain nodes.
 replicaCount: 3
 
@@ -10,14 +16,16 @@ pvcName: "local-pvc"
 
 config:
   # config.superAdmin -- Super admin account address.
-  superAdmin: 0x415f568207900b6940477396fcd2c201efe49beb
-  # config.imageTag -- Image tag of cita-cloud-config container.
+  superAdmin: 8f81961f263f45f88230375623394c9301c033e7
+  # config.imageTag -- Image tag of cloud-config container.
   imageTag: latest
-  # config.kmsPassword -- Password of kms.
-  kmsPassword: "123456"
-  # config.isStdout -- Is output log to stdout?
-  isStdout: false
-  # config.logLevel -- log level warn/info/debug/trace
+  # config.kmsPasswordList -- Password of kms for each node.
+  kmsPasswordList: 123456,123456,123456
+  # config.blockInterval -- Chain's block interval.
+  blockInterval: 3
+  # config.blockLimit --Chain's block limit.
+  blockLimit: 100
+  # config.logLevel -- Log level warn/info/debug/trace
   logLevel: info
 
 image:
@@ -39,22 +47,22 @@ debug:
   imageTag: latest
 
 network:
-  # network.imageName -- docker image of network container. citacloud/network_p2p or citacloud/network_direct
-  imageName: citacloud/network_p2p
+  # network.imageName -- docker image of network container. network_p2p or network_direct
+  imageName: network_p2p
   # network.imageTag -- Image tag of network container.
-  imageTag: latest
+  imageTag: v6.3.0
 
 consensus:
-  # consensus.imageName -- docker image of consensus container. citacloud/consensus_raft or citacloud/consensus_bft
-  imageName: citacloud/consensus_raft
+  # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
+  imageName: consensus_raft
   # consensus.imageTag -- Image tag of consensus container.
-  imageTag: latest
+  imageTag: v6.3.0
 
 executor:
-  # executor.imageName -- docker image of executor container. citacloud/executor_evm or citacloud/executor_poc or citacloud/executor_chaincode_ext
-  imageName: citacloud/executor_evm
+  # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
+  imageName: executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: latest
+  imageTag: v6.3.0
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
@@ -63,19 +71,19 @@ stateDB:
   imageTag: latest
 
 storage:
-  # storage.imageName -- docker image of storage container. citacloud/storage_rocksdb or citacloud/storage_sqlite
-  imageName: citacloud/storage_rocksdb
+  # storage.imageName -- docker image of storage container. storage_rocksdb or storage_sqlite
+  imageName: storage_rocksdb
   # storage.imageTag -- Image tag of storage container.
-  imageTag: latest
+  imageTag: v6.3.0
 
 controller:
   # controller.imageName -- docker image of controller container.
-  imageName: citacloud/controller
+  imageName: controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: latest
+  imageTag: v6.3.0
 
 kms:
-  # kms.imageName -- docker image of kms container. citacloud/kms_sm or citacloud/kms_eth
-  imageName: citacloud/kms_sm
+  # kms.imageName -- docker image of kms container. kms_sm or kms_eth
+  imageName: kms_sm
   # kms.imageTag -- Image tag of kms container.
-  imageTag: latest
+  imageTag: v6.3.0
