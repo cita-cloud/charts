@@ -28,7 +28,7 @@ debug:
   imageTag: latest
 
 network:
-  # network.imageName -- docker image of network container. network_p2p or network_direct
+  # network.imageName -- docker image of network container. network_p2p or network_tls
   imageName: network_p2p
   # network.imageTag -- Image tag of network container.
   imageTag: v6.3.0
@@ -43,7 +43,7 @@ executor:
   # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
   imageName: executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
@@ -61,10 +61,10 @@ controller:
   # controller.imageName -- docker image of controller container.
   imageName: controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
 
 kms:
   # kms.imageName -- docker image of kms container. kms_sm or kms_eth
   imageName: kms_sm
   # kms.imageTag -- Image tag of kms container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
