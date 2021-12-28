@@ -96,7 +96,7 @@ spec:
         command:
         - sh
         - -c
-        - network run -p 50000
+        - network run
         workingDir: /data
         volumeMounts:
         - name: datadir
@@ -118,7 +118,11 @@ spec:
         command:
         - sh
         - -c
+        {{- if eq .Values.consensus.imageName "consensus_raft" }}
         - consensus run --stdout
+        {{- else }}
+        - consensus run
+        {{- end }}
         workingDir: /data
         volumeMounts:
         - name: datadir
