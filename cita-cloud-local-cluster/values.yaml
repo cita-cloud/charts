@@ -18,7 +18,7 @@ config:
   # config.superAdmin -- Super admin account address.
   superAdmin: 8f81961f263f45f88230375623394c9301c033e7
   # config.imageTag -- Image tag of cloud-config container.
-  imageTag: latest
+  imageTag: v6.3.1
   # config.kmsPasswordList -- Password of kms for each node.
   kmsPasswordList: 123456,123456,123456
   # config.blockInterval -- Chain's block interval.
@@ -62,7 +62,7 @@ executor:
   # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
   imageName: executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
@@ -80,10 +80,10 @@ controller:
   # controller.imageName -- docker image of controller container.
   imageName: controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
 
 kms:
   # kms.imageName -- docker image of kms container. kms_sm or kms_eth
   imageName: kms_sm
   # kms.imageTag -- Image tag of kms container.
-  imageTag: v6.3.0
+  imageTag: v6.3.1
