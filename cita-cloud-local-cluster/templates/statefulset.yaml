@@ -15,6 +15,13 @@ spec:
       labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
     spec:
       shareProcessNamespace: true
+      tolerations:
+      - key: "rivtower.com/arch"
+        operator: "Equal"
+        value: "arm64"
+        effect: "NoExecute"
+      nodeSelector:
+        beta.kubernetes.io/arch : arm64
       initContainers:
       - image: {{ printf "citacloud/cloud-config:%s" .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
