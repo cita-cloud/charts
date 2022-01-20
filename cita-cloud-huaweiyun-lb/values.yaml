@@ -1,4 +1,4 @@
-# Default values for cita-cloud-porter-lb.
+# Default values for cita-cloud-huaweiyun-lb.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -9,13 +9,7 @@ config:
   domain: node0
 
 service:
+  # service.slb -- ID of the LoadBalancer
+  slb: xxxxxx
   # service.port -- Start port to expose service.
   port: 30000
-  # service.eipName -- Name of eip.
-  eipName: porter-eip
-  # service.startIP -- startIP of PorterLB.
-  startIP: 192.168.0.100
-  # service.endIP -- endIP of PorterLB.
-  endIP: 192.168.0.200
-  # service.interface -- NIC Used for PorterLB.
-  interface: eth0

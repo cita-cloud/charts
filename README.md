@@ -53,16 +53,10 @@ helm install decrease-single ./cita-cloud-config --set config.action.type=decrea
 helm install clean ./cita-cloud-config --set config.action.type=clean
 ```
 
-cita-cloud-eip - Create EIP for CITA-Cloud
+cita-cloud-porter-lb - Setup porter LoadBalancer for CITA-Cloud node
 
 ```
-$ helm install cita-cloud-eip ./cita-cloud-eip --set service.startIP=192.168.0.2 --set service.endIP=192.168.0.254
-```
-
-cita-cloud-porter-lb - Setup porter Loadbalancer for CITA-Cloud node
-
-```
-helm install test-chain-0-lb ./cita-cloud-porter-lb --set config.chainName=test-chain --set config.domain=node0 --set service.port=30000 --set service.eipName=cita-cloud-eip
+helm install test-chain-0-lb ./cita-cloud-porter-lb --set config.chainName=test-chain --set config.domain=node0 --set service.port=30000 --set service.eipName=cita-cloud-eip --set service.startIP=192.168.0.2 --set service.endIP=192.168.0.254
 ```
 
 cita-cloud-multi-cluster-node - Setup CITA-Cloud node in multi k8s cluster
