@@ -1,7 +1,6 @@
 apiVersion: v2
-name: cita-cloud-eip
-description: Create EIP for CITA-Cloud
-home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-eip
+name: cita-cloud-huaweiyun-lb
+description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,8 +20,10 @@ version: 6.3.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
 appVersion: "6.3.0"
 
-maintainers:
-  - email: contact@rivtower.com
-    name: Rivtower Technologies
+dependencies:
+  - name: cita-cloud-multi-cluster-node
+    version: 6.3.0
+    repository: "https://registry.devops.rivtower.com/chartrepo/cita-cloud"
