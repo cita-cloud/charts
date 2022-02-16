@@ -18,7 +18,7 @@ config:
   # config.superAdmin -- Super admin account address.
   superAdmin: 8f81961f263f45f88230375623394c9301c033e7
   # config.imageTag -- Image tag of cloud-config container.
-  imageTag: v6.3.1
+  imageTag: latest
   # config.kmsPasswordList -- Password of kms for each node.
   kmsPasswordList: 123456,123456,123456
   # config.blockInterval -- Chain's block interval.
@@ -50,19 +50,19 @@ network:
   # network.imageName -- docker image of network container. network_p2p or network_direct
   imageName: network_p2p
   # network.imageTag -- Image tag of network container.
-  imageTag: v6.3.0
+  imageTag: latest
 
 consensus:
   # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
   imageName: consensus_raft
   # consensus.imageTag -- Image tag of consensus container.
-  imageTag: v6.3.0
+  imageTag: latest
 
 executor:
   # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
   imageName: executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: v6.3.1
+  imageTag: latest
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
@@ -74,16 +74,16 @@ storage:
   # storage.imageName -- docker image of storage container. storage_rocksdb or storage_sqlite
   imageName: storage_rocksdb
   # storage.imageTag -- Image tag of storage container.
-  imageTag: v6.3.0
+  imageTag: latest
 
 controller:
   # controller.imageName -- docker image of controller container.
   imageName: controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: v6.3.1
+  imageTag: latest
 
 kms:
   # kms.imageName -- docker image of kms container. kms_sm or kms_eth
   imageName: kms_sm
   # kms.imageTag -- Image tag of kms container.
-  imageTag: v6.3.1
+  imageTag: latest
