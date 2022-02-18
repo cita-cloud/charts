@@ -1,5 +1,24 @@
 apiVersion: v1
 entries:
+  cita-cloud-aliyun-lb:
+  - apiVersion: v2
+    appVersion: 6.3.0
+    created: "2022-02-18T10:08:49.362424008Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.0
+    description: Setup CITA-Cloud node SLB in aliyun
+    digest: 44a81826a53e9a645d39c90b3ce75d31da48feb57d46f80b896e851a97553b98
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-aliyun-lb
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-aliyun-lb
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-aliyun-lb-6.3.0/cita-cloud-aliyun-lb-6.3.0.tgz
+    version: 6.3.0
   cita-cloud-config:
   - apiVersion: v2
     appVersion: 6.3.0
@@ -15,6 +34,21 @@ entries:
     type: application
     urls:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-config-6.3.0/cita-cloud-config-6.3.0.tgz
+    version: 6.3.0
+  cita-cloud-huaweiyun-lb:
+  - apiVersion: v2
+    appVersion: 6.3.0
+    created: "2022-02-18T10:08:49.74090546Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.0
+    description: A Helm chart for Kubernetes
+    digest: 53a326f9899cbad4828dbac0dc93af71fc6c0317e4a5ab5f0e90b2bd5653a341
+    name: cita-cloud-huaweiyun-lb
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-huaweiyun-lb-6.3.0/cita-cloud-huaweiyun-lb-6.3.0.tgz
     version: 6.3.0
   cita-cloud-local-cluster:
   - apiVersion: v2
@@ -46,6 +80,21 @@ entries:
     urls:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-multi-cluster-node-6.3.0/cita-cloud-multi-cluster-node-6.3.0.tgz
     version: 6.3.0
+  cita-cloud-nodeport:
+  - apiVersion: v2
+    appVersion: 6.3.0
+    created: "2022-02-18T10:08:50.333277567Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.0
+    description: A Helm chart for Kubernetes
+    digest: 4019a6dc79fb07950dd85c4ce720c05a587904e27afcc52546e769b160aceec4
+    name: cita-cloud-nodeport
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-nodeport-6.3.0/cita-cloud-nodeport-6.3.0.tgz
+    version: 6.3.0
   cita-cloud-porter-lb:
   - apiVersion: v2
     appVersion: 6.3.0
@@ -76,4 +125,4 @@ entries:
     urls:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-pvc-0.1.0/cita-cloud-pvc-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-15T08:27:21.992353179Z"
+generated: "2022-02-18T10:08:50.727456928Z"
