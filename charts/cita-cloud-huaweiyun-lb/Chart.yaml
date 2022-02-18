@@ -26,4 +26,4 @@ appVersion: "6.3.0"
 dependencies:
   - name: cita-cloud-multi-cluster-node
     version: 6.3.0
-    repository: "https://registry.devops.rivtower.com/chartrepo/cita-cloud"
+    repository: "file://../cita-cloud-multi-cluster-node"
