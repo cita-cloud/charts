@@ -68,12 +68,7 @@ while getopts t:c:p:s:P:N:i:l:L:x:y:z:Q:n:d: opt; do
   esac
 done
 
-count=$(ls -l /data/ | grep "^d" | grep "$chain_name-*" | wc -l | awk '$1=$1')
-index=''
-if [ "$action_type" == "increaseSingle" ] || [ $action_type == "decreaseSingle" ]; then
-  # index only for local cluster
-  index=$(expr $count - 1)
-fi
+index=$(ls -l /data/ | grep "^d" | grep "test-chain-[0-9]" | wc -l | awk '$1=$1')
 
 if [ $action_type == "initMulti" ]; then
   echo "init multi cluster chain $chain_name..."
