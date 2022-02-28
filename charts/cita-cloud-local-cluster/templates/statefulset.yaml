@@ -30,7 +30,7 @@ spec:
           - {{ .Release.Name }}
           # kms password list
           - -k
-          - {{ .Values.config.kmsPasswordList }}
+          - {{ .Values.config.kmsPasswordList | quote }}
           # replicaCount
           - -r
           - {{ .Values.replicaCount | quote }}
