@@ -1,11 +1,10 @@
 name: Release Helm Charts
 
 on:
-#  push:
-#    branches:
-#      - master
-#      - main
-#  pull_request:
+  push:
+    branches:
+      - 'v*'
+#   pull_request:
 #    branches:
 #      - master
 #      - main
