@@ -1,6 +1,0 @@
-dependencies:
-- name: cita-cloud-multi-cluster-node
-  repository: https://registry.devops.rivtower.com/chartrepo/cita-cloud
-  version: 6.3.0
-digest: sha256:a31ac90ef8e1bf8035739d01e5bdfd682a58fdb04b397f51429ee77065923549
-generated: "2022-01-18T15:28:21.908911+08:00"

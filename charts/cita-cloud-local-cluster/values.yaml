@@ -1,0 +1,89 @@
+# Default values for cita-cloud-local-cluster.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  # global.registry -- You can specify the image registry.
+  registry: docker.io
+  # global.repository -- You can specify the image repository.
+  repository: citacloud
+
+# replicaCount -- Count of blockchain nodes.
+replicaCount: 3
+
+# pvcName -- Name of persistentVolumeClaim.
+pvcName: "local-pvc"
+
+config:
+  # config.superAdmin -- Super admin account address.
+  superAdmin: 8f81961f263f45f88230375623394c9301c033e7
+  # config.imageTag -- Image tag of cloud-config container.
+  imageTag: latest
+  # config.kmsPasswordList -- Password of kms for each node.
+  kmsPasswordList: 123456,123456,123456
+  # config.blockInterval -- Chain's block interval.
+  blockInterval: 3
+  # config.blockLimit --Chain's block limit.
+  blockLimit: 100
+  # config.logLevel -- Log level warn/info/debug/trace
+  logLevel: info
+
+image:
+  # image.pullPolicy -- pullPolicy for all docker images.
+  pullPolicy: Always
+
+service:
+  # service.nodePort -- nodePort to expose controller RPC.
+  nodePort: 30004
+  # service.vmPort -- vmPort expose executor RPC
+  vmPort: 30005
+
+debug:
+  # debug.enabled -- Is there a debug container in each pod?
+  enabled: true
+  # debug.imageName -- Image name of debug container.
+  imageName: praqma/network-multitool
+  # debug.imageTag -- Image tag of debug container.
+  imageTag: latest
+
+network:
+  # network.imageName -- docker image of network container. network_p2p or network_direct
+  imageName: network_p2p
+  # network.imageTag -- Image tag of network container.
+  imageTag: latest
+
+consensus:
+  # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
+  imageName: consensus_raft
+  # consensus.imageTag -- Image tag of consensus container.
+  imageTag: latest
+
+executor:
+  # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
+  imageName: executor_evm
+  # executor.imageTag -- Image tag of executor container.
+  imageTag: latest
+
+stateDB:
+  # stateDB.imageName -- docker image of stateDB container.
+  imageName: couchdb
+  # stateDB.imageTag -- Image tag of stateDB container.
+  imageTag: latest
+
+storage:
+  # storage.imageName -- docker image of storage container. storage_rocksdb or storage_sqlite
+  imageName: storage_rocksdb
+  # storage.imageTag -- Image tag of storage container.
+  imageTag: latest
+
+controller:
+  # controller.imageName -- docker image of controller container.
+  imageName: controller
+  # controller.imageTag -- Image tag of controller container.
+  imageTag: latest
+
+kms:
+  # kms.imageName -- docker image of kms container. kms_sm or kms_eth
+  imageName: kms_sm
+  # kms.imageTag -- Image tag of kms container.
+  imageTag: latest
