@@ -9,7 +9,7 @@ global:
   repository: citacloud
 
 # replicaCount -- Count of blockchain nodes.
-replicaCount: 3
+replicaCount: 4
 
 # pvcName -- Name of persistentVolumeClaim.
 pvcName: "local-pvc"
@@ -20,7 +20,7 @@ config:
   # config.imageTag -- Image tag of cloud-config container.
   imageTag: latest
   # config.kmsPasswordList -- Password of kms for each node.
-  kmsPasswordList: 123456,123456,123456
+  kmsPasswordList: 123456,123456,123456,123456
   # config.blockInterval -- Chain's block interval.
   blockInterval: 3
   # config.blockLimit --Chain's block limit.
@@ -47,14 +47,14 @@ debug:
   imageTag: latest
 
 network:
-  # network.imageName -- docker image of network container. network_p2p or network_direct
-  imageName: network_p2p
+  # network.imageName -- docker image of network container. network_p2p or network_tls
+  imageName: network_tls
   # network.imageTag -- Image tag of network container.
   imageTag: latest
 
 consensus:
   # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
-  imageName: consensus_raft
+  imageName: consensus_bft
   # consensus.imageTag -- Image tag of consensus container.
   imageTag: latest
 

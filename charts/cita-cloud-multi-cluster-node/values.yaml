@@ -29,13 +29,13 @@ debug:
 
 network:
   # network.imageName -- docker image of network container. network_p2p or network_tls
-  imageName: network_p2p
+  imageName: network_tls
   # network.imageTag -- Image tag of network container.
   imageTag: latest
 
 consensus:
   # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
-  imageName: consensus_raft
+  imageName: consensus_bft
   # consensus.imageTag -- Image tag of consensus container.
   imageTag: latest
 
