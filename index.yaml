@@ -2,6 +2,24 @@ apiVersion: v1
 entries:
   cita-cloud-aliyun-lb:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:12.300306454Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.2
+    description: Setup CITA-Cloud node SLB in aliyun
+    digest: 15032e8d90781a1c09f519f77b47e3a2ac16da4b43f911c3343e7ab237245bdd
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-aliyun-lb
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-aliyun-lb
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-aliyun-lb-6.3.2/cita-cloud-aliyun-lb-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-18T10:08:49.362424008Z"
     dependencies:
@@ -21,6 +39,21 @@ entries:
     version: 6.3.0
   cita-cloud-config:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:12.454383077Z"
+    description: Create a job to change config of CITA-Cloud blockchain in one k8s
+      cluster
+    digest: d0749d94a923b2f715e49262945347cc3765e89ef78aaae6044ab5e3a9dee5df
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-config
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-config
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-config-6.3.2/cita-cloud-config-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-15T08:27:21.515123074Z"
     description: Create a job to change config of CITA-Cloud blockchain in one k8s
@@ -37,6 +70,20 @@ entries:
     version: 6.3.0
   cita-cloud-huaweiyun-lb:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:12.621762572Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.2
+    description: A Helm chart for Kubernetes
+    digest: b53b0df09eb5867af7cac91cb3aaabfe1379c3f5c1bfe399c10db517d4f8eb91
+    name: cita-cloud-huaweiyun-lb
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-huaweiyun-lb-6.3.2/cita-cloud-huaweiyun-lb-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-18T10:08:49.74090546Z"
     dependencies:
@@ -51,6 +98,20 @@ entries:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-huaweiyun-lb-6.3.0/cita-cloud-huaweiyun-lb-6.3.0.tgz
     version: 6.3.0
   cita-cloud-local-cluster:
+  - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:12.773961985Z"
+    description: Setup CITA-Cloud blockchain in one k8s cluster
+    digest: 4b1cc0bf761f92d04089d0e614a757b6cb9b6a954860b350083f4aceeeeb27ae
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-local-cluster
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-local-cluster
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-local-cluster-6.3.2/cita-cloud-local-cluster-6.3.2.tgz
+    version: 6.3.2
   - apiVersion: v2
     appVersion: 6.3.1
     created: "2022-02-15T08:27:21.64018476Z"
@@ -67,6 +128,20 @@ entries:
     version: 6.3.1
   cita-cloud-multi-cluster-node:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:12.927251805Z"
+    description: Setup CITA-Cloud node in multi k8s cluster
+    digest: b49afc82f3534c46cae1c04a99877fd9e1e753a61468822cfb1c214ae5fa5ee7
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-multi-cluster-node
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-multi-cluster-node
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-multi-cluster-node-6.3.2/cita-cloud-multi-cluster-node-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-15T08:27:21.761643347Z"
     description: Setup CITA-Cloud node in multi k8s cluster
@@ -81,6 +156,20 @@ entries:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-multi-cluster-node-6.3.0/cita-cloud-multi-cluster-node-6.3.0.tgz
     version: 6.3.0
   cita-cloud-nodeport:
+  - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:13.098279619Z"
+    dependencies:
+    - name: cita-cloud-multi-cluster-node
+      repository: file://../cita-cloud-multi-cluster-node
+      version: 6.3.2
+    description: A Helm chart for Kubernetes
+    digest: b568b75f4f80c42638ac281d4b7e78dd1df8a0b62ecd9eb10a9aa7914c9cf3be
+    name: cita-cloud-nodeport
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-nodeport-6.3.2/cita-cloud-nodeport-6.3.2.tgz
+    version: 6.3.2
   - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-18T10:08:50.333277567Z"
@@ -97,6 +186,20 @@ entries:
     version: 6.3.0
   cita-cloud-porter-lb:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:13.262106094Z"
+    description: Setup porter Loadbalancer for CITA-Cloud node
+    digest: 96b2fb8809749040f6b02615897336e35d24bdc234274e11eb103e9300c6ec93
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-porter-lb
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-porter-lb
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-porter-lb-6.3.2/cita-cloud-porter-lb-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.3.0
     created: "2022-02-15T08:27:21.864108104Z"
     description: Setup porter Loadbalancer for CITA-Cloud node
@@ -112,6 +215,20 @@ entries:
     version: 6.3.0
   cita-cloud-pvc:
   - apiVersion: v2
+    appVersion: 6.3.2
+    created: "2022-03-22T06:15:13.426696674Z"
+    description: Create PVC for CITA-Cloud
+    digest: 7e3fb99082c4b63285d2d96f32899e417bea4a09214b6e87fdb1182a19ec6b57
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-pvc
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-pvc
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-pvc-6.3.2/cita-cloud-pvc-6.3.2.tgz
+    version: 6.3.2
+  - apiVersion: v2
     appVersion: 6.0.0
     created: "2022-02-15T08:27:21.992344579Z"
     description: Create PVC for CITA-Cloud
@@ -125,4 +242,4 @@ entries:
     urls:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-pvc-0.1.0/cita-cloud-pvc-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-18T10:08:50.727456928Z"
+generated: "2022-03-22T06:15:13.426726774Z"
