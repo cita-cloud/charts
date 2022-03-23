@@ -123,7 +123,7 @@ spec:
         command:
           - sh
           - -c
-          - executor run -p 50002
+          - executor run
         workingDir: /data
         volumeMounts:
           - name: datadir
@@ -140,7 +140,7 @@ spec:
         command:
           - sh
           - -c
-          - storage run -p 50003
+          - storage run
         workingDir: /data
         volumeMounts:
           - name: datadir
@@ -172,7 +172,7 @@ spec:
         command:
           - sh
           - -c
-          - kms run -p 50005
+          - kms run
         workingDir: /data
         volumeMounts:
           - name: datadir
