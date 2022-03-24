@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
   labels:
-    node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
-    chain_name: {{ .Values.config.chainName }}
+    app.kubernetes.io/chain-node: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
+    app.kubernetes.io/chain-name: {{ .Values.config.chainName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
+      app.kubernetes.io/chain-node: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
   template:
     metadata:
       labels:
-        node_name: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
-        chain_name: {{ .Values.config.chainName }}
+        app.kubernetes.io/chain-node: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
+        app.kubernetes.io/chain-name: {{ .Values.config.chainName }}
     spec:
       shareProcessNamespace: true
       containers:

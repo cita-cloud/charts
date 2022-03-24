@@ -12,7 +12,9 @@ spec:
   podManagementPolicy: "Parallel"
   template:
     metadata:
-      labels: {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
+      labels:
+        app.kubernetes.io/chain-name: {{ .Release.Name }}
+        {{- include "cita-cloud-local-cluster.labels" . | nindent 8 }}
     spec:
       shareProcessNamespace: true
       initContainers:
