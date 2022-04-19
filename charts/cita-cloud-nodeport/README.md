@@ -1,6 +1,6 @@
 # cita-cloud-nodeport
 
-![Version: 6.3.2](https://img.shields.io/badge/Version-6.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.2](https://img.shields.io/badge/AppVersion-6.3.2-informational?style=flat-square)
+![Version: 6.3.3](https://img.shields.io/badge/Version-6.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.3](https://img.shields.io/badge/AppVersion-6.3.3-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -8,7 +8,7 @@ A Helm chart for Kubernetes
 
 | Repository | Name | Version |
 |------------|------|---------|
-| file://../cita-cloud-multi-cluster-node | cita-cloud-multi-cluster-node | 6.3.2 |
+| file://../cita-cloud-multi-cluster-node | cita-cloud-multi-cluster-node | 6.3.3 |
 
 ## Values
 

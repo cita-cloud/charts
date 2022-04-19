@@ -4,3 +4,6 @@
 
 # scName -- Name of storage class.
 scName: local
+
+# size -- Size of PV.
+size: 10Gi

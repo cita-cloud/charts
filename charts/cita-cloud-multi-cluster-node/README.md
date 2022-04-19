@@ -1,6 +1,6 @@
 # cita-cloud-multi-cluster-node
 
-![Version: 6.3.2](https://img.shields.io/badge/Version-6.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.2](https://img.shields.io/badge/AppVersion-6.3.2-informational?style=flat-square)
+![Version: 6.3.3](https://img.shields.io/badge/Version-6.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.3](https://img.shields.io/badge/AppVersion-6.3.3-informational?style=flat-square)
 
 Setup CITA-Cloud node in multi k8s cluster
 
@@ -18,7 +18,7 @@ Setup CITA-Cloud node in multi k8s cluster
 |-----|------|---------|-------------|
 | config.chainName | string | `"test-chain"` | Chain name of cita-cloud blockchain that will be setup. |
 | config.domain | string | `"node0"` | Domain of the node that will be setup. |
-| consensus.imageName | string | `"consensus_raft"` | docker image of consensus container. consensus_raft or consensus_bft |
+| consensus.imageName | string | `"consensus_bft"` | docker image of consensus container. consensus_raft or consensus_bft |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"controller"` | docker image of controller container. |
 | controller.imageTag | string | `"latest"` | Image tag of controller container. |
@@ -32,7 +32,7 @@ Setup CITA-Cloud node in multi k8s cluster
 | image.pullPolicy | string | `"Always"` | pullPolicy for all docker images IfNotPresent/Always. |
 | kms.imageName | string | `"kms_sm"` | docker image of kms container. kms_sm or kms_eth |
 | kms.imageTag | string | `"latest"` | Image tag of kms container. |
-| network.imageName | string | `"network_p2p"` | docker image of network container. network_p2p or network_tls |
+| network.imageName | string | `"network_tls"` | docker image of network container. network_p2p or network_tls |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
