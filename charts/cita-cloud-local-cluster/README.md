@@ -1,6 +1,6 @@
 # cita-cloud-local-cluster
 
-![Version: 6.3.2](https://img.shields.io/badge/Version-6.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.2](https://img.shields.io/badge/AppVersion-6.3.2-informational?style=flat-square)
+![Version: 6.3.3](https://img.shields.io/badge/Version-6.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.3](https://img.shields.io/badge/AppVersion-6.3.3-informational?style=flat-square)
 
 Setup CITA-Cloud blockchain in one k8s cluster
 
@@ -19,10 +19,10 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | config.blockInterval | int | `3` | Chain's block interval. |
 | config.blockLimit | int | `100` | Chain's block limit. |
 | config.imageTag | string | `"latest"` | Image tag of cloud-config container. |
-| config.kmsPasswordList | string | `"123456,123456,123456"` | Password of kms for each node. |
+| config.kmsPasswordList | string | `"123456,123456,123456,123456"` | Password of kms for each node. |
 | config.logLevel | string | `"info"` | Log level warn/info/debug/trace |
 | config.superAdmin | string | `"8f81961f263f45f88230375623394c9301c033e7"` | Super admin account address. |
-| consensus.imageName | string | `"consensus_raft"` | docker image of consensus container. consensus_raft or consensus_bft |
+| consensus.imageName | string | `"consensus_bft"` | docker image of consensus container. consensus_raft or consensus_bft |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"controller"` | docker image of controller container. |
 | controller.imageTag | string | `"latest"` | Image tag of controller container. |
@@ -36,10 +36,10 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | image.pullPolicy | string | `"Always"` | pullPolicy for all docker images. |
 | kms.imageName | string | `"kms_sm"` | docker image of kms container. kms_sm or kms_eth |
 | kms.imageTag | string | `"latest"` | Image tag of kms container. |
-| network.imageName | string | `"network_p2p"` | docker image of network container. network_p2p or network_direct |
+| network.imageName | string | `"network_tls"` | docker image of network container. network_p2p or network_tls |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
-| replicaCount | int | `3` | Count of blockchain nodes. |
+| replicaCount | int | `4` | Count of blockchain nodes. |
 | service.nodePort | int | `30004` | nodePort to expose controller RPC. |
 | service.vmPort | int | `30005` | vmPort expose executor RPC |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
