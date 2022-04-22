@@ -35,6 +35,10 @@ Setup CITA-Cloud node in multi k8s cluster
 | network.imageName | string | `"network_tls"` | docker image of network container. network_p2p or network_tls |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
+| resources.limits.cpu | string | `"4000m"` | cpu limit |
+| resources.limits.memory | string | `"8192Mi"` | memory limit |
+| resources.requests.cpu | string | `"10m"` | cpu request |
+| resources.requests.memory | string | `"32Mi"` | memory request |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
 | stateDB.imageTag | string | `"latest"` | Image tag of stateDB container. |
 | storage.imageName | string | `"storage_rocksdb"` | docker image of storage container. storage_rocksdb or storage_sqlite |

@@ -53,6 +53,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.consensus.imageName }}:{{ .Values.consensus.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: consensus
@@ -73,6 +75,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       {{- if contains "chaincode" .Values.executor.imageName }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -96,6 +100,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       - image: {{ printf "%s:%s" .Values.stateDB.imageName .Values.stateDB.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: stateDB
@@ -112,6 +118,8 @@ spec:
             value: citacloud
           - name: COUCHDB_PASSWORD
             value: citacloud
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       {{- else }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.executor.imageName }}:{{ .Values.executor.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -129,6 +137,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       {{- end }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.storage.imageName }}:{{ .Values.storage.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
@@ -146,6 +156,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.controller.imageName }}:{{ .Values.controller.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: controller
@@ -162,6 +174,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.kms.imageName }}:{{ .Values.kms.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: kms
@@ -178,6 +192,8 @@ spec:
           - name: datadir
             subPathExpr: {{ printf "%s-%v" .Values.config.chainName .Values.config.domain }}
             mountPath: /data
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       volumes:
         - name: datadir
           persistentVolumeClaim:
