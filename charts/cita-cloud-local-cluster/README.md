@@ -1,6 +1,6 @@
 # cita-cloud-local-cluster
 
-![Version: 6.3.3](https://img.shields.io/badge/Version-6.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.3.3](https://img.shields.io/badge/AppVersion-6.3.3-informational?style=flat-square)
+![Version: 6.4.0](https://img.shields.io/badge/Version-6.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.4.0](https://img.shields.io/badge/AppVersion-6.4.0-informational?style=flat-square)
 
 Setup CITA-Cloud blockchain in one k8s cluster
 

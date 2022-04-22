@@ -104,6 +104,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50000"
+          initialDelaySeconds: 15
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       - name: consensus
@@ -132,6 +139,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50001"
+          initialDelaySeconds: 15
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{- if contains "chaincode" .Values.executor.imageName }}
@@ -211,6 +225,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50002"
+          initialDelaySeconds: 15
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{- end }}
@@ -236,6 +257,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50003"
+          initialDelaySeconds: 15
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.controller.imageName }}:{{ .Values.controller.imageTag }}
@@ -260,6 +288,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50004"
+          initialDelaySeconds: 30
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       - name: kms
@@ -284,6 +319,13 @@ spec:
         - name: datadir
           subPathExpr: $(POD_NAME)
           mountPath: /data
+        livenessProbe:
+          exec:
+            command:
+              - "grpc_health_probe"
+              - "-addr=127.0.0.1:50005"
+          initialDelaySeconds: 15
+          periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
