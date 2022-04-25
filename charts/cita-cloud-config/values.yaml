@@ -35,9 +35,9 @@ config:
       # config.action.initMulti.logLevel -- Log level warn/info/debug/trace.
       logLevel: info
       # config.action.initMulti.networkImage -- Network: network_p2p/network_tls.
-      networkImage: network_p2p
+      networkImage: network_tls
       # config.action.initMulti.consensusImage -- Consensus: consensus_raft/consensus_bft.
-      consensusImage: consensus_raft
+      consensusImage: consensus_bft
       # config.action.initMulti.kmsImage -- Kms: kms_sm/kms_eth.
       kmsImage: kms_sm
     increaseMulti:
