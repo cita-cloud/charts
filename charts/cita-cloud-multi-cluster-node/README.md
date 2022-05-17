@@ -1,6 +1,6 @@
 # cita-cloud-multi-cluster-node
 
-![Version: 6.4.0](https://img.shields.io/badge/Version-6.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.4.0](https://img.shields.io/badge/AppVersion-6.4.0-informational?style=flat-square)
+![Version: 6.4.1](https://img.shields.io/badge/Version-6.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.4.1](https://img.shields.io/badge/AppVersion-6.4.1-informational?style=flat-square)
 
 Setup CITA-Cloud node in multi k8s cluster
 
@@ -27,6 +27,9 @@ Setup CITA-Cloud node in multi k8s cluster
 | debug.imageTag | string | `"latest"` | Image tag of debug container. |
 | executor.imageName | string | `"executor_evm"` | docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext |
 | executor.imageTag | string | `"latest"` | Image tag of executor container. |
+| exporter.enabled | bool | `true` | Is there an exporter container in each pod? |
+| exporter.imageName | string | `"monitor-citacloud-exporter"` | Image name of exporter container. |
+| exporter.imageTag | string | `"latest"` | Image tag of exporter container. |
 | global.registry | string | `"docker.io"` |  |
 | global.repository | string | `"citacloud"` |  |
 | image.pullPolicy | string | `"Always"` | pullPolicy for all docker images IfNotPresent/Always. |
