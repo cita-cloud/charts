@@ -79,6 +79,33 @@ spec:
           subPathExpr: $(POD_NAME)
           mountPath: /data
       {{- end }}
+      {{- if .Values.exporter.enabled }}
+      - name: exporter
+        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.exporter.imageName }}:{{ .Values.exporter.imageTag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 9349
+          protocol: TCP
+          name: exporter
+        args:
+          - "--node-grpc-host"
+          - "localhost"
+          - "--node-grpc-port"
+          - "50004"
+          - "--node-data-folder"
+          - "."
+        workingDir: /data
+        volumeMounts:
+          - name: datadir
+            subPathExpr: $(POD_NAME)
+            mountPath: /data
+      {{- end }}
       - name: network
         image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.network.imageName }}:{{ .Values.network.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}

@@ -81,3 +81,11 @@ resources:
     cpu: 4000m
     # resources.limits.memory -- memory limit
     memory: 8192Mi
+
+exporter:
+  # exporter.enabled -- Is there an exporter container in each pod?
+  enabled: true
+  # exporter.imageName -- Image name of exporter container.
+  imageName: monitor-citacloud-exporter
+  # exporter.imageTag -- Image tag of exporter container.
+  imageTag: latest
