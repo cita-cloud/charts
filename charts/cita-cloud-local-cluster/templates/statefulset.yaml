@@ -30,9 +30,6 @@ spec:
           # chain's name
           - -c
           - {{ .Release.Name }}
-          # kms password list
-          - -k
-          - {{ .Values.config.kmsPasswordList | quote }}
           # replicaCount
           - -r
           - {{ .Values.replicaCount | quote }}
@@ -48,9 +45,9 @@ spec:
           # consensus image
           - -y
           - {{ .Values.consensus.imageName }}
-          # kms image
+          # crypto image
           - -z
-          - {{ .Values.kms.imageName }}
+          - {{ .Values.crypto.imageName }}
         volumeMounts:
         - name: datadir
           mountPath: /data
@@ -324,8 +321,8 @@ spec:
           periodSeconds: 10
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-      - name: kms
-        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.kms.imageName }}:{{ .Values.kms.imageTag }}
+      - name: crypto
+        image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.crypto.imageName }}:{{ .Values.crypto.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         env:
         - name: POD_NAME
@@ -340,7 +337,7 @@ spec:
         command:
         - sh
         - -c
-        - kms run
+        - crypto run
         workingDir: /data
         volumeMounts:
         - name: datadir

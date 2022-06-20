@@ -1,6 +1,6 @@
 # cita-cloud-local-cluster
 
-![Version: 6.4.1](https://img.shields.io/badge/Version-6.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.4.1](https://img.shields.io/badge/AppVersion-6.4.1-informational?style=flat-square)
+![Version: 6.5.0](https://img.shields.io/badge/Version-6.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.5.0](https://img.shields.io/badge/AppVersion-6.5.0-informational?style=flat-square)
 
 Setup CITA-Cloud blockchain in one k8s cluster
 
@@ -19,26 +19,25 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | config.blockInterval | int | `3` | Chain's block interval. |
 | config.blockLimit | int | `100` | Chain's block limit. |
 | config.imageTag | string | `"latest"` | Image tag of cloud-config container. |
-| config.kmsPasswordList | string | `"123456,123456,123456,123456"` | Password of kms for each node. |
 | config.logLevel | string | `"info"` | Log level warn/info/debug/trace |
 | config.superAdmin | string | `"8f81961f263f45f88230375623394c9301c033e7"` | Super admin account address. |
 | consensus.imageName | string | `"consensus_bft"` | docker image of consensus container. consensus_raft or consensus_bft |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"controller"` | docker image of controller container. |
 | controller.imageTag | string | `"latest"` | Image tag of controller container. |
-| debug.enabled | bool | `true` | Is there a debug container in each pod? |
+| crypto.imageName | string | `"crypto_sm"` | docker image of crypto container. crypto_sm or crypto_eth |
+| crypto.imageTag | string | `"latest"` | Image tag of crypto container. |
+| debug.enabled | bool | `false` | Is there a debug container in each pod? |
 | debug.imageName | string | `"praqma/network-multitool"` | Image name of debug container. |
 | debug.imageTag | string | `"latest"` | Image tag of debug container. |
 | executor.imageName | string | `"executor_evm"` | docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext |
 | executor.imageTag | string | `"latest"` | Image tag of executor container. |
-| exporter.enabled | bool | `true` | Is there an exporter container in each pod? |
+| exporter.enabled | bool | `false` | Is there an exporter container in each pod? |
 | exporter.imageName | string | `"monitor-citacloud-exporter"` | Image name of exporter container. |
 | exporter.imageTag | string | `"latest"` | Image tag of exporter container. |
 | global.registry | string | `"docker.io"` | You can specify the image registry. |
 | global.repository | string | `"citacloud"` | You can specify the image repository. |
 | image.pullPolicy | string | `"Always"` | pullPolicy for all docker images. |
-| kms.imageName | string | `"kms_sm"` | docker image of kms container. kms_sm or kms_eth |
-| kms.imageTag | string | `"latest"` | Image tag of kms container. |
 | network.imageName | string | `"network_tls"` | docker image of network container. network_p2p or network_tls |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |

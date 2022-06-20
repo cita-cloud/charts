@@ -19,8 +19,6 @@ config:
   superAdmin: 8f81961f263f45f88230375623394c9301c033e7
   # config.imageTag -- Image tag of cloud-config container.
   imageTag: latest
-  # config.kmsPasswordList -- Password of kms for each node.
-  kmsPasswordList: 123456,123456,123456,123456
   # config.blockInterval -- Chain's block interval.
   blockInterval: 3
   # config.blockLimit --Chain's block limit.
@@ -40,7 +38,7 @@ service:
 
 debug:
   # debug.enabled -- Is there a debug container in each pod?
-  enabled: true
+  enabled: false
   # debug.imageName -- Image name of debug container.
   imageName: praqma/network-multitool
   # debug.imageTag -- Image tag of debug container.
@@ -82,10 +80,10 @@ controller:
   # controller.imageTag -- Image tag of controller container.
   imageTag: latest
 
-kms:
-  # kms.imageName -- docker image of kms container. kms_sm or kms_eth
-  imageName: kms_sm
-  # kms.imageTag -- Image tag of kms container.
+crypto:
+  # crypto.imageName -- docker image of crypto container. crypto_sm or crypto_eth
+  imageName: crypto_sm
+  # crypto.imageTag -- Image tag of crypto container.
   imageTag: latest
 
 # The following are just some reference values, you must set the following values according to the actual environment
@@ -103,7 +101,7 @@ resources:
 
 exporter:
   # exporter.enabled -- Is there an exporter container in each pod?
-  enabled: true
+  enabled: false
   # exporter.imageName -- Image name of exporter container.
   imageName: monitor-citacloud-exporter
   # exporter.imageTag -- Image tag of exporter container.

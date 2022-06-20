@@ -1,6 +1,6 @@
 # cita-cloud-config
 
-![Version: 6.4.1](https://img.shields.io/badge/Version-6.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.4.1](https://img.shields.io/badge/AppVersion-6.4.1-informational?style=flat-square)
+![Version: 6.5.0](https://img.shields.io/badge/Version-6.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 6.5.0](https://img.shields.io/badge/AppVersion-6.5.0-informational?style=flat-square)
 
 Create a job to change config of CITA-Cloud blockchain in one k8s cluster
 
@@ -16,19 +16,6 @@ Create a job to change config of CITA-Cloud blockchain in one k8s cluster
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| config.action.decreaseMulti.domain | string | `"node2"` | Set the domain you want to delete. |
-| config.action.increaseMulti.kmsPassword | string | `"123456"` | KmsPassword for new node. |
-| config.action.increaseMulti.node | string | `"192.168.10.136:40000:node3"` | New node, format: [ip:port:domain]. |
-| config.action.increaseSingle.kmsPassword | string | `"123456"` | KmsPassword for new node. |
-| config.action.initMulti.blockInterval | int | `3` | Chain's block interval. |
-| config.action.initMulti.blockLimit | int | `100` | Chain's block limit. |
-| config.action.initMulti.consensusImage | string | `"consensus_bft"` | Consensus: consensus_raft/consensus_bft. |
-| config.action.initMulti.kmsImage | string | `"kms_sm"` | Kms: kms_sm/kms_eth. |
-| config.action.initMulti.kmsPasswordList | string | `"123456,123456,123456"` | KmsPassword of each chain node. |
-| config.action.initMulti.logLevel | string | `"info"` | Log level warn/info/debug/trace. |
-| config.action.initMulti.networkImage | string | `"network_tls"` | Network: network_p2p/network_tls. |
-| config.action.initMulti.nodeList | string | `"192.168.10.123:40000:node0,192.168.10.134:40000:node1,192.168.10.135:40000:node2"` | NodeList of each chain node, format: [ip:port:domain]. |
-| config.action.initMulti.superAdmin | string | `"8f81961f263f45f88230375623394c9301c033e7"` | Super admin account address. |
 | config.action.type | string | `"increaseSingle"` | Action of cita-cloud-config. If the chain's nodes are in a k8s cluster, you should use xxxSingle action; if the chain's nodes are in multi k8s clusters, you should use xxxMulti action; the clean action is universal. |
 | config.chainName | string | `"test-chain"` | Chain name of cita-cloud blockchain that will be changed. |
 | config.imageTag | string | `"latest"` | Image tag of cita-cloud-config container. |
