@@ -11,7 +11,7 @@ image:
 
 config:
   # config.imageTag -- Image tag of cita-cloud-config container.
-  imageTag: latest
+  imageTag: v6.5.0
   # config.chainName -- Chain name of cita-cloud blockchain that will be changed.
   chainName: test-chain
 
