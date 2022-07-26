@@ -18,7 +18,7 @@ spec:
     spec:
       shareProcessNamespace: true
       initContainers:
-      - image: {{ printf "citacloud/cloud-config:%s" .Values.config.imageTag }}
+      - image: {{ .Values.global.registry }}/{{ .Values.global.repository }}/{{ .Values.config.imageName }}:{{ .Values.config.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         name: cloud-config
         command:

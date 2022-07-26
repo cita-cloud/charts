@@ -17,6 +17,8 @@ pvcName: "local-pvc"
 config:
   # config.superAdmin -- Super admin account address.
   superAdmin: 8f81961f263f45f88230375623394c9301c033e7
+  # config.imageName -- docker image  of cloud-config.
+  imageName: cloud-config
   # config.imageTag -- Image tag of cloud-config container.
   imageTag: latest
   # config.blockInterval -- Chain's block interval.
