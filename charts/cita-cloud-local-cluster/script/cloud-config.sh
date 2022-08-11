@@ -50,7 +50,7 @@ node_list=''
 
 i=0
 while [ $i -lt "$replica_count" ]; do
-  node_list=$node_list$chain_name"-$i.$chain_name-headless-service:40000:$i,"
+  node_list=$node_list$chain_name"-$i.$chain_name-headless-service:40000:$i:k8s,"
   # shellcheck disable=SC2004
   i=$(($i + 1))
 done

@@ -32,12 +32,6 @@ image:
   # image.pullPolicy -- pullPolicy for all docker images.
   pullPolicy: Always
 
-service:
-  # service.nodePort -- nodePort to expose controller RPC.
-  nodePort: 30004
-  # service.vmPort -- vmPort expose executor RPC
-  vmPort: 30005
-
 debug:
   # debug.enabled -- Is there a debug container in each pod?
   enabled: false
@@ -47,13 +41,13 @@ debug:
   imageTag: latest
 
 network:
-  # network.imageName -- docker image of network container. network_p2p or network_tls
-  imageName: network_tls
+  # network.imageName -- docker image of network container.
+  imageName: network_zenoh
   # network.imageTag -- Image tag of network container.
   imageTag: latest
 
 consensus:
-  # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft
+  # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft or consensus_overlord
   imageName: consensus_bft
   # consensus.imageTag -- Image tag of consensus container.
   imageTag: latest

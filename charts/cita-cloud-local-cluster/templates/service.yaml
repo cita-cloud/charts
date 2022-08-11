@@ -1,22 +1,27 @@
+{{ $releaseName := .Release.Name }}
+{{ $namespace := .Release.Namespace }}
+{{- range int .Values.replicaCount | until }}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ printf "%s-node-port" .Release.Name }}
-  labels:
-    {{- include "cita-cloud-local-cluster.labels" . | nindent 4 }}
+  name: {{ $releaseName }}-{{ . }}
+  namespace: {{ $namespace }}
 spec:
   type: NodePort
   ports:
+    - name: network
+      port: 40000
+      protocol: UDP
+      targetPort: 40000
     - port: 50004
       targetPort: 50004
-      nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
       name: rpc
     - port: 50002
       targetPort: 50002
-      nodePort: {{ .Values.service.vmPort }}
       protocol: TCP
       name: call
   selector:
-    {{- include "cita-cloud-local-cluster.selectorLabels" . | nindent 4 }}
-  sessionAffinity: ClientIP
+    statefulset.kubernetes.io/pod-name: {{ $releaseName }}-{{ . }}
+    {{- end }}

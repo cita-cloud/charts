@@ -42,13 +42,3 @@ cita-cloud-local-cluster - Setup CITA-Cloud blockchain in one k8s cluster.
 ```
 helm install test-chain ./cita-cloud-local-cluster
 ```
-
-cita-cloud-config - Create a job to create/change config of CITA-Cloud blockchain in one k8s cluster
-
-```
-helm install increase-single ./cita-cloud-config --set config.action.type=increaseSingle --set config.action.increaseSingle.kmsPassword=123456
-
-helm install decrease-single ./cita-cloud-config --set config.action.type=decreaseSingle
-
-helm install clean ./cita-cloud-config --set config.action.type=clean
-```
