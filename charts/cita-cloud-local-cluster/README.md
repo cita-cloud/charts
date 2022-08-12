@@ -18,10 +18,11 @@ Setup CITA-Cloud blockchain in one k8s cluster
 |-----|------|---------|-------------|
 | config.blockInterval | int | `3` | Chain's block interval. |
 | config.blockLimit | int | `100` | Chain's block limit. |
+| config.imageName | string | `"cloud-config"` | docker image  of cloud-config. |
 | config.imageTag | string | `"latest"` | Image tag of cloud-config container. |
 | config.logLevel | string | `"info"` | Log level warn/info/debug/trace |
 | config.superAdmin | string | `"8f81961f263f45f88230375623394c9301c033e7"` | Super admin account address. |
-| consensus.imageName | string | `"consensus_bft"` | docker image of consensus container. consensus_raft or consensus_bft |
+| consensus.imageName | string | `"consensus_bft"` | docker image of consensus container. consensus_raft or consensus_bft or consensus_overlord |
 | consensus.imageTag | string | `"latest"` | Image tag of consensus container. |
 | controller.imageName | string | `"controller"` | docker image of controller container. |
 | controller.imageTag | string | `"latest"` | Image tag of controller container. |
@@ -38,7 +39,7 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | global.registry | string | `"docker.io"` | You can specify the image registry. |
 | global.repository | string | `"citacloud"` | You can specify the image repository. |
 | image.pullPolicy | string | `"Always"` | pullPolicy for all docker images. |
-| network.imageName | string | `"network_tls"` | docker image of network container. network_p2p or network_tls |
+| network.imageName | string | `"network_zenoh"` | docker image of network container. |
 | network.imageTag | string | `"latest"` | Image tag of network container. |
 | pvcName | string | `"local-pvc"` | Name of persistentVolumeClaim. |
 | replicaCount | int | `4` | Count of blockchain nodes. |
@@ -46,8 +47,6 @@ Setup CITA-Cloud blockchain in one k8s cluster
 | resources.limits.memory | string | `"8192Mi"` | memory limit |
 | resources.requests.cpu | string | `"10m"` | cpu request |
 | resources.requests.memory | string | `"32Mi"` | memory request |
-| service.nodePort | int | `30004` | nodePort to expose controller RPC. |
-| service.vmPort | int | `30005` | vmPort expose executor RPC |
 | stateDB.imageName | string | `"couchdb"` | docker image of stateDB container. |
 | stateDB.imageTag | string | `"latest"` | Image tag of stateDB container. |
 | storage.imageName | string | `"storage_rocksdb"` | docker image of storage container. storage_rocksdb or storage_sqlite |
