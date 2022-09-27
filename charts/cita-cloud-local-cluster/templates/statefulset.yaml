@@ -356,7 +356,7 @@ spec:
       - name: cloud-config-shell
         configMap:
           name: {{ .Release.Name }}-cloud-config-shell
-          defaultMode: 0744
+          defaultMode: 0777
       - name: datadir
         persistentVolumeClaim:
           claimName: {{ .Values.pvcName | quote }}
