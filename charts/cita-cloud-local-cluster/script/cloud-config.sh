@@ -66,3 +66,9 @@ cloud-config create-k8s --chain-name "$chain_name" \
   --network_image "$network_image" \
   --consensus_image "$consensus_image" \
   --crypto_image "$crypto_image"
+
+while [ $replica_count -gt 0 ]; do
+  index=`expr $replica_count - 1`
+  sed -i 's/\/mnt\//''/g' /data/$chain_name-$index/config.toml
+  let replica_count--
+done
