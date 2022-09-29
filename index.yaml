@@ -208,6 +208,20 @@ entries:
     version: 6.3.0
   cita-cloud-local-cluster:
   - apiVersion: v2
+    appVersion: 6.6.1
+    created: "2022-09-29T06:23:06.717674333Z"
+    description: Setup CITA-Cloud blockchain in one k8s cluster
+    digest: 594ddff035985af1f11ac84ef500ced5224baa3795b9168fd290a06754d9886c
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-local-cluster
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-local-cluster
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-local-cluster-6.6.1/cita-cloud-local-cluster-6.6.1.tgz
+    version: 6.6.1
+  - apiVersion: v2
     appVersion: 6.6.0
     created: "2022-08-12T03:13:28.953204921Z"
     description: Setup CITA-Cloud blockchain in one k8s cluster
@@ -464,6 +478,20 @@ entries:
     version: 6.3.0
   cita-cloud-pvc:
   - apiVersion: v2
+    appVersion: 6.6.1
+    created: "2022-09-29T06:23:06.886649293Z"
+    description: Create PVC for CITA-Cloud
+    digest: f289c4e5dab849b7366d60376fbfd393e010d9364c35a8a0a6ae79be742bbc09
+    home: https://github.com/cita-cloud/charts/tree/master/cita-cloud-pvc
+    maintainers:
+    - email: contact@rivtower.com
+      name: Rivtower Technologies
+    name: cita-cloud-pvc
+    type: application
+    urls:
+    - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-pvc-6.6.1/cita-cloud-pvc-6.6.1.tgz
+    version: 6.6.1
+  - apiVersion: v2
     appVersion: 6.6.0
     created: "2022-08-12T03:13:29.231131541Z"
     description: Create PVC for CITA-Cloud
@@ -547,4 +575,4 @@ entries:
     urls:
     - https://github.com/cita-cloud/charts/releases/download/helm-chart-cita-cloud-pvc-0.1.0/cita-cloud-pvc-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-12T03:13:29.231212743Z"
+generated: "2022-09-29T06:23:06.886775794Z"
