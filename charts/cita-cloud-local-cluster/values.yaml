@@ -20,7 +20,7 @@ config:
   # config.imageName -- docker image  of cloud-config.
   imageName: cloud-config
   # config.imageTag -- Image tag of cloud-config container.
-  imageTag: latest
+  imageTag: v6.6.1
   # config.blockInterval -- Chain's block interval.
   blockInterval: 3
   # config.blockLimit --Chain's block limit.
@@ -44,19 +44,19 @@ network:
   # network.imageName -- docker image of network container.
   imageName: network_zenoh
   # network.imageTag -- Image tag of network container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 consensus:
   # consensus.imageName -- docker image of consensus container. consensus_raft or consensus_bft or consensus_overlord
   imageName: consensus_bft
   # consensus.imageTag -- Image tag of consensus container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 executor:
   # executor.imageName -- docker image of executor container. executor_evm or executor_poc or executor_chaincode_ext
   imageName: executor_evm
   # executor.imageTag -- Image tag of executor container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 stateDB:
   # stateDB.imageName -- docker image of stateDB container.
@@ -68,19 +68,19 @@ storage:
   # storage.imageName -- docker image of storage container. storage_rocksdb or storage_sqlite
   imageName: storage_rocksdb
   # storage.imageTag -- Image tag of storage container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 controller:
   # controller.imageName -- docker image of controller container.
   imageName: controller
   # controller.imageTag -- Image tag of controller container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 crypto:
   # crypto.imageName -- docker image of crypto container. crypto_sm or crypto_eth
   imageName: crypto_sm
   # crypto.imageTag -- Image tag of crypto container.
-  imageTag: latest
+  imageTag: v6.6.1
 
 # The following are just some reference values, you must set the following values according to the actual environment
 resources:
